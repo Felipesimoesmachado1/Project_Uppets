@@ -1,0 +1,488 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f5f5;
+}
+
+#cabecalho {
+    background-color: #bdecb6;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#lupa{
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    width: 400px;
+}
+#lupa input[type="text"] {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 10px;
+    border-radius: 30px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s ease;
+}
+
+#lupa input[type="text"]:focus {
+    background-color: #e0e0e0;
+}
+
+#menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; 
+}
+#menu-links {
+    font-size: 20px;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-right: 15px;
+}
+
+#menu-links a {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#menu-links a:hover {
+    color: #007bff;
+}
+
+#menu-links i {
+    font-size: 20px;
+}
+
+p {
+    color: #3f3f3f;
+    margin-left: 50px;
+}
+
+h3 {
+    margin-left: 50px;
+}
+
+.link {
+    text-decoration: dashed;
+    color: black;
+}
+
+.link:hover {
+    color: #007bff;
+    border-radius: 5px;
+}
+
+a {
+    text-decoration: dashed;
+    text-align: center;
+    color: black;
+}
+
+#conteiner {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    margin-top: 50px;
+    gap: 30px;
+}
+
+#conteiner a {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, border-radius 0.3s ease;
+    text-decoration: none;
+}
+
+#conteiner a:hover {
+    background-color: #e0e0e0;
+    border-radius: 20px;
+}
+
+.image {
+    width: 280px;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+#conteiner a:hover .image {
+    transform: scale(1.05);
+}
+
+#conteiner h3,
+#conteiner p {
+    margin: 5px;
+    text-align: center;
+}
+
+#logo {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+}
+#logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+}
+#voltar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border: 2px solid #bdecb6;
+    border-radius: 50%;
+    text-decoration: none;
+    color: #333;
+    font-size: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#voltar:hover {
+    background-color: #bdecb6;
+    color: #007bff;
+}
+h1{
+    margin-top: 40px;
+    text-align: center;
+}
+#information {
+    margin: 30px auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.card {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.image-text {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.image-text img {
+    width: 300px;
+    border-radius: 8px;
+}
+
+.image-text p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+#end {
+    text-align: center;
+    padding: 30px;
+    background-color: #bdecb6;
+    margin-top: 40px;
+}
+
+.contato {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.social-icon {
+    font-size: 26px;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #007bff;
+}
+
+.social-icon i {
+    margin-right: 8px;
+}
+#carrinho-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #333;
+}
+
+#carrinho-itens {
+    margin-top: 20px;
+}
+
+.item-carrinho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.imagem-produto {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+
+.info-produto {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.info-produto h3 {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.info-produto p {
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.preco {
+    color: #007bff;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.quantidade {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantidade-input {
+    width: 50px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.btn-quantidade {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-quantidade:hover {
+    background-color: #0056b3;
+}
+
+.btn-remover {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-remover:hover {
+    background-color: #cc0000;
+}
+
+#resumo-carrinho {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#resumo-carrinho p {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #555;
+}
+
+#finalizar-compra {
+    margin-top: 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#finalizar-compra:hover {
+    background-color: #218838;
+} 
+
+#logo-container img {
+    width: 120px;
+}
+
+#menu-links {
+    display: flex;
+    gap: 20px;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+#clinica-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#servicos {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.servico {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.servico h2 {
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.servico p {
+    color: #555;
+    margin-bottom: 20px;
+    text-align: center; 
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#agendamento-form {
+    display: grid;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-block-end: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+#agendamento-form label {
+    font-weight: bold;
+    color: #333;
+}
+
+#agendamento-form input,
+#agendamento-form select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#agendamento-form button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#agendamento-form button:hover {
+    background-color: #0056b3;
+}
+
+.cancelar-btn {
+    background-color: #ff4444;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.cancelar-btn:hover {
+    background-color: #cc0000;
+}
+
+#confirmacao {
+    display: none;
+    text-align: center;
+}

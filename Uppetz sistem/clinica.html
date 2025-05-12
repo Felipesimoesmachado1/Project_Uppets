@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Catálogo</title>
+</head>
+<body>
+
+    <div id="cabecalho">
+        <div id="menu">
+            <div id="logo-container">
+                <a href="index.html" id="voltar">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <a href="index.html"><img src="img/logo.png" alt="Logo" id="logo"></a>
+            </div>
+            <div id="menu-links">
+                <a href="login.html" class="link"><i class="fas fa-user"></i><strong>Perfil</strong></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="clinica-container">
+        <h1>Agendamento de Consulta - Petshop</h1>
+
+        <div id="servicos">
+            <div class="servico">
+                <h2>Agendamento Online</h2>
+                <p>Agende consultas veterinárias com facilidade, escolha o dia e horário que melhor se adequa à sua rotina.</p>
+            </div>
+
+            <div class="servico">
+                <h2>Vacinas</h2>
+                <p>Mantenha seu pet protegido com as vacinas mais eficazes. Confira nosso calendário e agende sua vacinação.</p>
+            </div>
+
+            <div class="servico">
+                <h2>Consultas</h2>
+                <p>Oferecemos consultas de rotina, emergenciais e especializadas para cuidar da saúde do seu pet.</p>
+            </div>
+        </div>
+
+        <form action="#" method="POST" class="form-agendamento" id="agendamento-form">
+            <label for="nome-pet">Nome do Pet</label>
+            <input type="text" id="nome-pet" name="nomePet" required>
+
+            <label for="data">Data de Agendamento</label>
+            <input type="date" id="data" name="data" required>
+
+            <label for="horario">Horário</label>
+            <input type="time" id="horario" name="horario" required>
+
+            <label for="tipo-consulta">Tipo de Consulta</label>
+            <select id="tipo-consulta" name="tipoConsulta">
+                <option value="consulta-geral">Consulta Geral</option>
+                <option value="consulta-especializada">Consulta Especializada</option>
+                <option value="emergencia">Emergência</option>
+                <option value="emergencia">Vacina</option>
+            </select>
+
+            <button type="submit">Confirmar Agendamento</button>
+        </form>
+
+        <div id="confirmacao" style="display: none;">
+            <h2>Agendamento Confirmado!</h2>
+            <p id="agendamento-details"></p>
+            <button class="cancelar-btn" id="cancelar-agendamento">Cancelar Agendamento</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('agendamento-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio do formulário tradicional
+
+            const nomePet = document.getElementById('nome-pet').value;
+            const data = document.getElementById('data').value;
+            const horario = document.getElementById('horario').value;
+            const tipoConsulta = document.getElementById('tipo-consulta').value;
+
+            // Armazenando no localStorage
+            const agendamento = { nomePet, data, horario, tipoConsulta };
+            localStorage.setItem('agendamento', JSON.stringify(agendamento));
+
+            // Exibe confirmação de agendamento
+            document.getElementById('confirmacao').style.display = 'block';
+            document.getElementById('agendamento-details').innerHTML = `
+                O agendamento para o pet <strong>${nomePet}</strong> foi realizado com sucesso!<br>
+                <strong>Data:</strong> ${data} <br>
+                <strong>Horário:</strong> ${horario} <br>
+                <strong>Tipo de Consulta:</strong> ${tipoConsulta}
+            `;
+
+            // Limpar formulário
+            document.getElementById('agendamento-form').reset();
+        });
+
+        // Função para cancelar o agendamento
+        document.getElementById('cancelar-agendamento').addEventListener('click', function() {
+            localStorage.removeItem('agendamento');
+            document.getElementById('confirmacao').style.display = 'none';
+            alert('Agendamento cancelado com sucesso!');
+        });
+
+        // Verificar se já existe um agendamento salvo
+        window.onload = function() {
+            const agendamento = JSON.parse(localStorage.getItem('agendamento'));
+            if (agendamento) {
+                document.getElementById('confirmacao').style.display = 'block';
+                document.getElementById('agendamento-details').innerHTML = `
+                    O agendamento para o pet <strong>${agendamento.nomePet}</strong> já está confirmado!<br>
+                    <strong>Data:</strong> ${agendamento.data} <br>
+                    <strong>Horário:</strong> ${agendamento.horario} <br>
+                    <strong>Tipo de Consulta:</strong> ${agendamento.tipoConsulta}
+                `;
+            }
+        }
+    </script>
+
+</body>
+</html>

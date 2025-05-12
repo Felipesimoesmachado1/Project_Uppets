@@ -1,0 +1,241 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f5f5;
+}
+
+#cabecalho {
+    background-color: #bdecb6;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#lupa{
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    width: 400px;
+}
+#lupa input[type="text"] {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 10px;
+    border-radius: 30px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s ease;
+}
+
+#lupa input[type="text"]:focus {
+    background-color: #e0e0e0;
+}
+
+#menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; 
+}
+#menu-links {
+    font-size: 20px;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-right: 15px;
+}
+
+#menu-links a {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#menu-links a:hover {
+    color: #007bff;
+}
+
+#menu-links i {
+    font-size: 20px;
+}
+#logo {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+}
+#logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+}
+#voltar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border: 2px solid #bdecb6;
+    border-radius: 50%;
+    text-decoration: none;
+    color: #333;
+    font-size: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#voltar:hover {
+    background-color: #bdecb6;
+    color: #007bff;
+}
+p {
+    color: #3f3f3f;
+    margin-left: 50px;
+}
+
+h3 {
+    margin-left: 50px;
+}
+
+.link {
+    text-decoration: dashed;
+    color: black;
+}
+a {
+    text-decoration: dashed;
+    text-align: center;
+    color: black;
+}
+
+#conteiner {
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 20px; 
+    justify-items: center;  
+    padding: 20px;
+    margin-top: 50px;
+    max-width: 1000px;
+   margin: auto;
+}
+#conteiner a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, background-color 0.3s ease;
+    text-decoration: none;
+}
+
+#conteiner a:hover {
+    transform: scale(1.05); 
+    background-color: #e0e0e0;
+}
+
+.image {
+    width: 100%; 
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px; 
+    transition: transform 0.3s ease;
+}
+
+#conteiner a:hover .image {
+    transform: scale(1.1); 
+}
+
+#conteiner h3 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #333;
+    text-align: center;
+}
+
+#conteiner p {
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+    margin: 0;
+    line-height: 1.5;
+}
+#compra {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+.image-buy {
+    max-width: 300px;
+    border-radius: 10px;
+}
+#detalhes-produto {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#detalhes-produto h3 {
+    font-size: 24px;
+    color: #333;
+}
+#detalhes-produto p {
+    color: #777;
+    font-size: 16px;
+}
+#detalhes-produto .preco {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
+.quantidade-container {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+.quantidade-container button {
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    padding: 8px 15px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.quantidade-container input {
+    width: 50px;
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0 10px;
+}
+#botao-compra {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+#botao-compra:hover {
+    background-color: #218838;
+}

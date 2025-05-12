@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style2.css">
+    <title>Recuperar senha</title>
+</head>
+<body>
+    <div id="cabecalho">
+        <div id="logo-container">
+            <a href="index.html"><img src="img/logo.png" alt="Logo" id="logo"></a>
+        </div>
+        <h1>Bem vindo a UpPetz</h1>
+    </div>
+
+    <div id="dp2">
+        <h3>RECUPERAR SENHA</h3>
+        <input type="password" name="senha" placeholder="Nova senha" required>
+        <br>
+        <input type="password" name="senhaConfirmada" placeholder="Confirmar senha" required>
+        <br>
+        <input type="submit" id="botao" value="Confirmar" onclick="atualizarSenha()">
+    </div>
+
+   <script>
+    // Função para atualizar a senha
+    function atualizarSenha() {
+        // Obtém os valores dos campos de senha
+        const senha = document.querySelector('input[name="senha"]').value;
+        const confirmarSenha = document.querySelector('input[name="senhaConfirmada"]').value;
+
+        // Verifica se os campos estão vazios
+        if (!senha || !confirmarSenha) {
+            alert("Por favor, preencha todos os campos de senha.");
+            return; // Impede o envio do formulário
+        }
+
+        // Verifica se as senhas coincidem
+        if (senha !== confirmarSenha) {
+            alert("As senhas não coincidem! Tente novamente.");
+            return; // Impede o envio do formulário
+        }
+
+        // Aqui você pode adicionar a lógica para salvar a nova senha no back-end, 
+        // por exemplo, fazendo uma requisição via AJAX para um servidor.
+        // Como estamos simulando, vamos simplesmente dar um alerta e redirecionar.
+
+        alert("Senha atualizada com sucesso!");
+
+        // Após a atualização, redireciona para a página de cadastro
+        window.location.href = 'cadastro.html';
+    }
+    </script>
+    
+</body>
+</html>

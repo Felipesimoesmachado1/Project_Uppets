@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style4.css">
+    <title>Ração</title>
+</head>
+<body>
+    <header id="cabecalho">
+        <div id="menu">
+            <div id="logo-container">
+                <a href="racao.html" id="voltar">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <a href="index.html"><img src="img/logo.png" alt="Logo" id="logo"></a>
+            </div>
+            <div id="lupa">
+                <input type="text" placeholder="Procurar">
+            </div>
+            <div id="menu-links">
+                <a href="Carrinho.html" class="link"><i class="fas fa-shopping-cart"></i><strong>Carrinho</strong></a>
+                <a href="login.html" class="link"><i class="fas fa-user"></i><strong>Perfil</strong></a>
+            </div>
+        </div>
+    </header>
+    <main id="compra">
+        
+        <div class="produto">
+            <img src="img/recao(2).png" class="image-buy" alt="Ração Pedigree">
+            <div class="detalhes-produto">
+                <h3>GoldeN - Ração Seca Adulto Nutrição Essencial</h3>
+                <p>Ração de Gatos Adultos - Salmão</p>
+                <p class="preco">R$ 79,90</p>
+                <form action="/adicionar_carrinho" method="POST">
+                    <input type="hidden" name="produto_nome" value="Pedigree - Ração Seca Adulto Nutrição Essencial">
+                    <input type="hidden" name="produto_preco" value="99.90">
+                    <div class="quantidade-container">
+                        <input type="number" id="quantidade1" name="quantidade" value="1" min="1">
+                    </div>
+                    <button class="botao-compra" onclick="adicionarAoCarrinho('GoldeN - Ração Seca Adulto Nutrição Essencial', '79.90', 'img/recao(2).png', document.getElementById('quantidade1').value); return false;">
+                        Adicionar ao Carrinho
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="produto">
+            <img src="img/recao(3).png" class="image-buy" alt="Ração Pedigree">
+            <div class="detalhes-produto">
+                <h3>GoldeN - Ração Seca Adulto Nutrição Essencial</h3>
+                <p>Ração Special para Gatos Adultos - Frango e Carne</p>
+                <p class="preco">R$ 79,90</p>
+                <form action="/adicionar_carrinho" method="POST">
+                    <input type="hidden" name="produto_nome" value="Pedigree - Ração Seca Adulto Nutrição Essencial">
+                    <input type="hidden" name="produto_preco" value="99.90">
+                    <div class="quantidade-container">
+                        <input type="number" id="quantidade1" name="quantidade" value="1" min="1">
+                    </div>
+                    <button class="botao-compra" onclick="adicionarAoCarrinho('GoldeN - Ração Seca Adulto Nutrição Essencial', '79.90', 'img/recao(3).png', document.getElementById('quantidade1').value); return false;">
+                        Adicionar ao Carrinho
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="produto">
+            <img src="img/recao(4).png" class="image-buy" alt="Ração Pedigree">
+            <div class="detalhes-produto">
+                <h3>GoldeN - Ração Seca Adulto Nutrição Essencial</h3>
+                <p>Ração de Gatos Filhotes - Frango</p>
+                <p class="preco">R$ 79,90</p>
+                <form action="/adicionar_carrinho" method="POST">
+                    <input type="hidden" name="produto_nome" value="Pedigree - Ração Seca Adulto Nutrição Essencial">
+                    <input type="hidden" name="produto_preco" value="99.90">
+                    <div class="quantidade-container">
+                        <input type="number" id="quantidade1" name="quantidade" value="1" min="1">
+                    </div>
+                    <button class="botao-compra" onclick="adicionarAoCarrinho('GoldeN - Ração Seca Adulto Nutrição Essencial', '79.90', 'img/recao(4).png', document.getElementById('quantidade1').value); return false;">
+                        Adicionar ao Carrinho
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Função para carregar o carrinho do localStorage
+        function carregarCarrinho() {
+           return JSON.parse(localStorage.getItem('carrinho')) || [];
+       }
+
+       // Função para salvar o carrinho no localStorage
+       function salvarCarrinho(carrinho) {
+           localStorage.setItem('carrinho', JSON.stringify(carrinho));
+       }
+
+       // Função para adicionar um item ao carrinho
+       function adicionarAoCarrinho(nome, preco, imagem, quantidade) {
+           const carrinho = carregarCarrinho();
+           const itemExistente = carrinho.find(item => item.nome === nome);
+
+           if (itemExistente) {
+               itemExistente.quantidade += parseInt(quantidade); // Aumenta a quantidade se o item já existir
+           } else {
+               const novoItem = { nome, preco, imagem, quantidade: parseInt(quantidade) };
+               carrinho.push(novoItem);
+           }
+
+           salvarCarrinho(carrinho);
+           alert("Produto adicionado ao carrinho!");
+       }
+   </script>
+</body>
+</html>

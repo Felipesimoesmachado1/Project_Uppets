@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style3.css">
+    <title>Ração</title>
+</head>
+<body>
+    <div id="cabecalho">
+        <div id="menu">
+            <div id="logo-container">
+                <a href="index.html" id="voltar">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <a href="index.html"><img src="img/logo.png" alt="Logo" id="logo"></a>
+            </div>
+            <div id="lupa">
+                <input type="text" id="searchInput" placeholder="Procurar" onkeyup="filtrarProdutos()">
+            </div>
+            <div id="menu-links">
+                <a href="Carrinho.html" class="link"><i class="fas fa-shopping-cart"></i><strong>Carrinho</strong></a>
+                <a href="login.html" class="link"><i class="fas fa-user"></i><strong>Perfil</strong></a>
+            </div>
+        </div>
+    </div>
+
+    <div id="conteiner">
+        <div class="produto">
+            <a href="racao1.html"><img src="img/racao.avif" class="image">
+                <h3>Pedigree</h3><br>
+                <p>Ração Seca Adulto Nutrição Essencial - Carne</p><br>
+            </a>
+        </div>
+
+        <div class="produto">
+            <a href="racao1.html"><img src="img/racao2.png" class="image">
+                <h3>Pedigree</h3><br>
+                <p>Ração Seca Adulto Nutrição Essencial - Carne e Vegetais</p><br> 
+            </a>
+        </div>
+
+        <div class="produto">
+            <a href="racao1.html"><img src="img/racao3.png" class="image">
+                <h3>Pedigree</h3><br>
+                <p>Ração Seca Adulto Nutrição Essencial - Vegetais</p><br>
+            </a>
+        </div>
+        
+        <div class="produto">
+            <a href="racao2.html"><img src="img/recao(2).png" class="image">
+                <h3>GoldeN</h3><br>
+                <p>Ração de Gatos Adultos - Salmão</p><br>
+            </a>
+        </div>
+
+        <div class="produto">
+            <a href="racao2.html"><img src="img/recao(3).png" class="image">
+                <h3>GoldeN</h3><br>
+                <p>Ração Special para Gatos Adultos - Frango e Carne</p><br>
+            </a>
+        </div>
+
+        <div class="produto">
+            <a href="racao2.html"><img src="img/recao(4).png" class="image">
+                <h3>GoldeN</h3><br>
+                <p>Ração de Gatos Filhotes - Frango</p><br>
+            </a>
+        </div> 
+
+        <div class="produto">
+            <a href="racao3.html"><img src="img/recao(5).png" class="image">
+                <h3>Gold</h3><br>
+                <p>Ração Corrupião</p><br>
+            </a>
+        </div>
+
+        <div class="produto">
+            <a href="racao3.html"><img src="img/recao7.png" class="image">
+                <h3>Gold</h3><br>
+                <p>Ração Pintassilgo</p><br>
+            </a>
+        </div>
+
+        <div class="produto">
+            <a href="racao3.html"><img src="img/image9-Photoroom.png" class="image">
+                <h3>Gold</h3><br>
+                <p>Ração Curió</p><br>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Função para filtrar os produtos com base no texto de pesquisa
+        function filtrarProdutos() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();  
+            const produtos = document.querySelectorAll('.produto');  
+
+            // Loop para verificar cada produto
+            produtos.forEach(function(produto) {
+                const nomeProduto = produto.querySelector('h3').textContent.toLowerCase();  
+                const descricaoProduto = produto.querySelector('p').textContent.toLowerCase();  
+
+                // Verifica se o nome ou descrição do produto contém o texto da pesquisa
+                if (nomeProduto.includes(searchInput) || descricaoProduto.includes(searchInput)) {
+                    produto.style.display = '';  
+                } else {
+                    produto.style.display = 'none'; 
+                }
+            });
+        }
+    </script>
+</body>
+</html>

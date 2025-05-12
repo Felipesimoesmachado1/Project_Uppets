@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style2.css">
+    <title>Cadastro</title>
+</head>
+<body>
+    <div id="cabecalho">
+        <div id="logo-container">
+            <a href="index.html"><img src="img/logo.png" alt="Logo" id="logo"></a>
+        </div>
+        <h1>Bem-vindo a UpPetz</h1>
+    </div>
+    
+    <form id="formCadastro">
+        <div id="dp2">
+            <h3>Cadastro</h3>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <br>
+            <input type="password" id="senha" name="senha" placeholder="Senha" required>
+            <br>
+            <input type="text" id="cpf" name="cpf" placeholder="CPF" required>
+            <br>
+            <input type="submit" id="botao" value="Cadastrar">
+            <br>
+            <a href="recsenha.html" id="esqueci">Esqueci minha senha</a>
+        </div>
+    </form>
+
+    <script>
+        // Função para capturar o envio do formulário
+        document.getElementById('formCadastro').addEventListener('submit', function(event) {
+            event.preventDefault();  // Impede o envio do formulário para o servidor
+
+            // Captura os dados do formulário
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+            const cpf = document.getElementById('cpf').value;
+
+            // Validar os campos (CPF, Email e Senha)
+            if (!validarFormulario(cpf, email)) {
+                return;  // Se a validação falhar, não envia o formulário
+            }
+
+            // Condição para simular o cadastro com email e senha específicos
+            if (email === 'senai@sul.com' && senha === '123') {
+                // Cadastro bem-sucedido, redireciona para index.html
+                alert('Cadastro realizado com sucesso!');
+                window.location.href = 'index.html';  // Redireciona para a página inicial
+            } else {
+                // Caso o email ou senha não sejam os esperados
+                alert('Email ou senha incorretos. Tente novamente!');
+            }
+        });
+
+        // Função para validar o CPF
+        function validarCPF(cpf) {
+            cpf = cpf.replace(/[^\d]+/g, ''); // Remove tudo que não é número
+
+            // Verificar se o CPF tem 11 dígitos
+            if (cpf.length !== 11) {
+                return false;
+            }
+
+            // Verificar se todos os números são iguais
+            if (/^(\d)\1+$/.test(cpf)) {
+                return false;
+            }
+
+            let soma = 0;
+            let resto;
+
+            // Validação do primeiro dígito
+            for (let i = 0; i < 9; i++) {
+                soma += parseInt(cpf.charAt(i)) * (10 - i);
+            }
+            resto = (soma * 10) % 11;
+            if (resto === 10 || resto === 11) {
+                resto = 0;
+            }
+            if (resto !== parseInt(cpf.charAt(9))) {
+                return false;
+            }
+
+            soma = 0;
+            // Validação do segundo dígito
+            for (let i = 0; i < 10; i++) {
+                soma += parseInt(cpf.charAt(i)) * (11 - i);
+            }
+            resto = (soma * 10) % 11;
+            if (resto === 10 || resto === 11) {
+                resto = 0;
+            }
+            if (resto !== parseInt(cpf.charAt(10))) {
+                return false;
+            }
+
+            return true;
+        }
+
+        // Função para validar o e-mail
+        function validarEmail(email) {
+            const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return regexEmail.test(email);
+        }
+
+        // Função para validar o formulário antes do envio
+        function validarFormulario(cpf, email) {
+            // Validar CPF
+            if (!validarCPF(cpf)) {
+                alert("CPF inválido. Por favor, verifique o número.");
+                return false;
+            }
+
+            // Validar Email
+            if (!validarEmail(email)) {
+                alert("Email inválido. Por favor, insira um email válido.");
+                return false;
+            }
+
+            return true;  // Se tudo estiver certo, o formulário pode ser enviado
+        }
+    </script>
+
+</body>
+</html>
