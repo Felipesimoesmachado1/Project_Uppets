@@ -1,0 +1,360 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f7fa;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: #2a9d8f;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 1.5rem;
+}
+
+.navbar-menu a {
+  color: white;
+  text-decoration: none;
+  margin-left: 25px;
+  font-weight: 600;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.navbar-menu a:hover,
+.navbar-menu a.active {
+  color: #e9c46a;
+}
+
+#logoutBtn {
+  background-color: transparent;
+  border: 1.5px solid white;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#logoutBtn:hover {
+  background-color: white;
+  color: #2a9d8f;
+}
+
+main {
+  flex-grow: 1;
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+section {
+  display: none;
+}
+
+section.active {
+  display: block;
+}
+
+/* Dashboard aberto por padrão */
+#dashboardPage {
+  display: block;
+}
+
+#dataAtual {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  font-weight: 600;
+  color: #264653;
+  text-transform: capitalize;
+}
+
+#contadoresDashboard {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.contador {
+  background: white;
+  border-radius: 10px;
+  padding: 25px 30px;
+  flex: 1 1 200px;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: #2a9d8f;
+  font-weight: 700;
+  font-size: 1.3rem;
+  transition: background-color 0.3s;
+}
+
+.contador:hover {
+  background-color: #e0f2f1;
+}
+
+#agendamentosTable {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+#agendamentosTable th,
+#agendamentosTable td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.95rem;
+}
+
+#agendamentosTable th {
+  background-color: #264653;
+  color: white;
+  font-weight: 600;
+}
+
+#agendamentosTable tr:hover {
+  background-color: #f1f9f8;
+}
+
+#agendamentosTable td:last-child {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+#agendamentosTable button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #2a9d8f;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+
+#agendamentosTable button:hover {
+  color: #e76f51;
+}
+
+#addAgendamentoBtn {
+  margin: 20px 0 30px;
+  background-color: #2a9d8f;
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#addAgendamentoBtn:hover {
+  background-color: #1f6060;
+}
+
+#relatoriosPage form {
+  background: white;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#relatoriosPage label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #264653;
+}
+
+#relatoriosPage select,
+#relatoriosPage input[type='date'],
+#relatoriosPage textarea {
+  width: 100%;
+  padding: 10px 14px;
+  margin-bottom: 18px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+  font-family: inherit;
+}
+
+#relatoriosPage select:focus,
+#relatoriosPage input[type='date']:focus,
+#relatoriosPage textarea:focus {
+  outline: none;
+  border-color: #2a9d8f;
+}
+
+#relatoriosPage textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+#relatoriosPage button[type='submit'] {
+  background-color: #2a9d8f;
+  color: white;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#relatoriosPage button[type='submit']:hover {
+  background-color: #1f6060;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-menu {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  #contadoresDashboard {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  #agendamentosTable th,
+  #agendamentosTable td {
+    font-size: 0.85rem;
+    padding: 10px 8px;
+  }
+
+  #addAgendamentoBtn {
+    width: 100%;
+    padding: 14px;
+  }
+
+  #relatoriosPage form {
+    width: 100%;
+    padding: 20px;
+  }
+}
+
+/* Modal para cadastro */
+.modal-bg {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-bg.active {
+  display: flex;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  padding: 25px 30px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+  color: #264653;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #264653;
+}
+
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  padding: 10px 14px;
+  margin-bottom: 15px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+  font-family: inherit;
+}
+
+.modal-content input:focus,
+.modal-content select:focus {
+  outline: none;
+  border-color: #2a9d8f;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 10px 22px;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.btn-primary {
+  background-color: #2a9d8f;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #1f6060;
+}
+
+.btn-secondary {
+  background-color: #e76f51;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #c5533e;
+}

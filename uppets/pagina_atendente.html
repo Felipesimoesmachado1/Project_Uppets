@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPPET - Sistema Completo</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <style>
+        .unified-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+        }
+        
+        .header-unified {
+            background: linear-gradient(135deg, #4ECDC4, #44A08D);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .header-unified h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header-unified p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .sections-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .section-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-icon {
+            font-size: 1.8rem;
+        }
+        
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card-small {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .stat-card-small .stat-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .stat-card-small .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .stat-card-small .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .appointments-today {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .appointment-item-unified {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #4ECDC4;
+            position: relative;
+        }
+        
+        .appointment-header-unified {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .appointment-time-unified {
+            color: #4ECDC4;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .appointment-details-unified {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .quick-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .quick-btn {
+            background: #4ECDC4;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .quick-btn:hover {
+            background: #44A08D;
+        }
+        
+        .quick-btn.secondary {
+            background: #ddd;
+            color: #333;
+        }
+        
+        .quick-btn.danger {
+            background: #e74c3c;
+        }
+        
+        .notes-section {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        
+        .notes-section textarea {
+            width: 100%;
+            min-height: 80px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            resize: vertical;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        /* Role Toggle */
+        .role-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+        
+        .role-btn {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 2px solid #4ECDC4;
+            background: white;
+            color: #4ECDC4;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .role-btn.active {
+            background: #4ECDC4;
+            color: white;
+        }
+        
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal {
+            background-color: white;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-30px);
+            transition: all 0.3s;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        /* Role-specific views */
+        .view-atendente, .view-veterinario {
+            display: none;
+        }
+        
+        .role-atendente .view-atendente,
+        .role-veterinario .view-veterinario {
+            display: block;
+        }
+        
+        .role-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 5;
+        }
+        
+        .role-badge.atendente {
+            background-color: #e3f7f5;
+            color: #4ECDC4;
+        }
+        
+        .role-badge.veterinario {
+            background-color: #f0e6fd;
+            color: #9b59b6;
+        }
+        
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateX(120%);
+            transition: transform 0.3s;
+            z-index: 1200;
+        }
+        
+        .notification.active {
+            transform: translateX(0);
+        }
+        
+        .notification-icon {
+            color: #4ECDC4;
+            font-size: 1.2rem;
+        }
+        
+        .notification-close {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #999;
+            margin-left: 10px;
+        }
+        
+        .action-edit {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: #666;
+        }
+        
+        .action-edit:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            .sections-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .appointment-details-unified {
+                grid-template-columns: 1fr;
+            }
+            
+            .quick-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Tabs for modal */
+        .modal-tabs {
+            display: flex;
+            border-bottom: 2px solid #eee;
+            margin-bottom: 20px;
+        }
+        
+        .modal-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #666;
+            position: relative;
+        }
+        
+        .modal-tab.active {
+            color: #4ECDC4;
+        }
+        
+        .modal-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #4ECDC4;
+        }
+        
+        .modal-tab-content {
+            display: none;
+        }
+        
+        .modal-tab-content.active {
+            display: block;
+        }
+    </style>
+<script src="https://lib.youware.com/youware-lib.1747145198.js" id="yourware-lib"></script></head>
+<body>
+    <div class="unified-container" id="app-container" class="role-both">
+        <div class="header-unified">
+            <img src="https://i.ibb.co/YPXRtT3/veterinary.png" alt="UPPET Logo" style="max-width: 80px; margin-bottom: 15px;">
+            <h1>UPPET Sistem</h1>
+            <p>Sistema Completo de Gerenciamento Veterinário</p>
+            <div style="margin-top: 20px;">
+                <span id="current-date">16 de Junho, 2025</span> | 
+                <span id="current-user">Usuário: admin</span> |
+                <span id="sync-status" style="color: #e8f4f8;">🔄 Sincronizado</span> |
+                <a href="login.html" style="color: white; text-decoration: underline;">Sair</a>
+            </div>
+        </div>
+        
+        <div class="role-toggle">
+            <button class="role-btn active" data-role="both">Visão Completa</button>
+            <button class="role-btn" data-role="atendente">Visão Atendente</button>
+            <button class="role-btn" data-role="veterinario">Visão Veterinário</button>
+        </div>
+        
+        <div class="quick-stats">
+            <div class="stat-card-small">
+                <div class="stat-icon">📅</div>
+                <div class="stat-value">12</div>
+                <div class="stat-label">Consultas Hoje</div>
+            </div>
+            
+            <div class="stat-card-small">
+                <div class="stat-icon">⏳</div>
+                <div class="stat-value">8</div>
+                <div class="stat-label">Aguardando</div>
+            </div>
+            
+            <div class="stat-card-small">
+                <div class="stat-icon">✅</div>
+                <div class="stat-value">4</div>
+                <div class="stat-label">Concluídas</div>
+            </div>
+            
+            <div class="stat-card-small">
+                <div class="stat-icon">🐾</div>
+                <div class="stat-value">152</div>
+                <div class="stat-label">Pacientes</div>
+            </div>
+            
+            <div class="stat-card-small">
+                <div class="stat-icon">👨‍⚕️</div>
+                <div class="stat-value">4</div>
+                <div class="stat-label">Veterinários</div>
+            </div>
+            
+            <div class="stat-card-small">
+                <div class="stat-icon">🚨</div>
+                <div class="stat-value">2</div>
+                <div class="stat-label">Emergências</div>
+            </div>
+        </div>
+        
+        <div class="appointments-today">
+            <h2 class="section-title">
+                <span class="section-icon">📋</span>
+                Consultas de Hoje
+            </h2>
+            
+            <div class="appointment-item-unified" data-id="12345">
+                <div class="role-badge atendente">Atendente</div>
+                <div class="action-edit" onclick="openEditModal('atendente', 12345)">✏️</div>
+                
+                <div class="appointment-header-unified">
+                    <div>
+                        <h3>Rex (Labrador) - 4 anos</h3>
+                        <p style="color: #666; margin: 5px 0;">Proprietário: Carlos Silva</p>
+                    </div>
+                    <div class="appointment-time-unified">10:30</div>
+                </div>
+                
+                <div class="appointment-details-unified">
+                    <div>
+                        <strong>Veterinário:</strong><br>
+                        Dra. Ana Silva
+                    </div>
+                    <div>
+                        <strong>Tipo:</strong><br>
+                        Consulta de Rotina
+                    </div>
+                    <div>
+                        <strong>Status:</strong><br>
+                        <span class="status confirmed">Confirmado</span>
+                    </div>
+                </div>
+                
+                <div style="background: #fff3cd; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+                    <strong>Observações:</strong> <span id="obs-12345">Pet com perda de apetite há 3 dias. Letargia e redução de atividade.</span>
+                </div>
+                
+                <div class="quick-actions view-atendente">
+                    <button class="quick-btn" onclick="changeStatus(12345, 'atendimento')">Iniciar Atendimento</button>
+                    <button class="quick-btn secondary" onclick="openEditModal('atendente', 12345)">Editar</button>
+                    <button class="quick-btn secondary" onclick="openRescheduleModal(12345)">Reagendar</button>
+                    <button class="quick-btn danger" onclick="cancelAppointment(12345)">Cancelar</button>
+                </div>
+                
+                <div class="notes-section view-veterinario">
+                    <strong>Anotações Clínicas:</strong>
+                    <textarea id="notes-12345" placeholder="Digite suas observações sobre o atendimento..."></textarea>
+                    <div style="margin-top: 10px;">
+                        <button class="quick-btn" onclick="saveNotes(12345)">Salvar Anotação</button>
+                        <button class="quick-btn secondary" onclick="openUploadModal(12345)">Anexar Arquivo</button>
+                        <button class="quick-btn secondary" onclick="openPrescriptionModal(12345)">Prescrever Medicamento</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="appointment-item-unified" data-id="12346">
+                <div class="role-badge veterinario">Veterinário</div>
+                <div class="action-edit" onclick="openEditModal('veterinario', 12346)">✏️</div>
+                
+                <div class="appointment-header-unified">
+                    <div>
+                        <h3>Mia (Persa) - 2 anos</h3>
+                        <p style="color: #666; margin: 5px 0;">Proprietário: Juliana Santos</p>
+                    </div>
+                    <div class="appointment-time-unified">11:00</div>
+                </div>
+                
+                <div class="appointment-details-unified">
+                    <div>
+                        <strong>Veterinário:</strong><br>
+                        Dr. Roberto Silva
+                    </div>
+                    <div>
+                        <strong>Tipo:</strong><br>
+                        Dermatologia
+                    </div>
+                    <div>
+                        <strong>Status:</strong><br>
+                        <span class="status pending" id="status-12346">Aguardando</span>
+                    </div>
+                </div>
+                
+                <div style="background: #fff3cd; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+                    <strong>Observações:</strong> <span id="obs-12346">Áreas de alopecia na região dorsal e prurido intenso há 2 semanas.</span>
+                </div>
+                
+                <div class="quick-actions view-atendente">
+                    <button class="quick-btn" onclick="changeStatus(12346, 'atendimento')">Iniciar Atendimento</button>
+                    <button class="quick-btn secondary" onclick="openEditModal('atendente', 12346)">Editar</button>
+                    <button class="quick-btn secondary" onclick="openRescheduleModal(12346)">Reagendar</button>
+                    <button class="quick-btn danger" onclick="cancelAppointment(12346)">Cancelar</button>
+                </div>
+                
+                <div class="notes-section view-veterinario">
+                    <strong>Anotações Clínicas:</strong>
+                    <textarea id="notes-12346" placeholder="Digite suas observações sobre o atendimento...">Paciente apresenta lesões típicas de dermatite alérgica. Recomendo exames complementares para identificar o alérgeno.</textarea>
+                    <div style="margin-top: 10px;">
+                        <button class="quick-btn" onclick="saveNotes(12346)">Salvar Anotação</button>
+                        <button class="quick-btn secondary" onclick="openUploadModal(12346)">Anexar Arquivo</button>
+                        <button class="quick-btn secondary" onclick="openPrescriptionModal(12346)">Prescrever Medicamento</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="appointment-item-unified" data-id="12349">
+                <div class="role-badge atendente">Atendente</div>
+                <div class="action-edit" onclick="openEditModal('atendente', 12349)">✏️</div>
+                
+                <div class="appointment-header-unified">
+                    <div>
+                        <h3>Thor (Bulldog) - 5 anos</h3>
+                        <p style="color: #666; margin: 5px 0;">Proprietário: Pedro Mendes</p>
+                    </div>
+                    <div class="appointment-time-unified">16:00</div>
+                </div>
+                
+                <div class="appointment-details-unified">
+                    <div>
+                        <strong>Veterinário:</strong><br>
+                        Dra. Patrícia Santos
+                    </div>
+                    <div>
+                        <strong>Tipo:</strong><br>
+                        Ortopedia
+                    </div>
+                    <div>
+                        <strong>Status:</strong><br>
+                        <span class="status confirmed" id="status-12349">Confirmado</span>
+                    </div>
+                </div>
+                
+                <div style="background: #fff3cd; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+                    <strong>Observações:</strong> <span id="obs-12349">Retorno para avaliação de claudicação em membro posterior direito.</span>
+                </div>
+                
+                <div class="quick-actions view-atendente">
+                    <button class="quick-btn" onclick="changeStatus(12349, 'atendimento')">Iniciar Atendimento</button>
+                    <button class="quick-btn secondary" onclick="openEditModal('atendente', 12349)">Editar</button>
+                    <button class="quick-btn secondary" onclick="openRescheduleModal(12349)">Reagendar</button>
+                    <button class="quick-btn danger" onclick="cancelAppointment(12349)">Cancelar</button>
+                </div>
+                
+                <div class="notes-section view-veterinario">
+                    <strong>Anotações Clínicas:</strong>
+                    <textarea id="notes-12349" placeholder="Digite suas observações sobre o atendimento..."></textarea>
+                    <div style="margin-top: 10px;">
+                        <button class="quick-btn" onclick="saveNotes(12349)">Salvar Anotação</button>
+                        <button class="quick-btn secondary" onclick="openUploadModal(12349)">Anexar Arquivo</button>
+                        <button class="quick-btn secondary" onclick="openPrescriptionModal(12349)">Prescrever Medicamento</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sections-grid">
+            <div class="section-card">
+                <h2 class="section-title">
+                    <span class="section-icon">➕</span>
+                    Ações Rápidas
+                </h2>
+                
+                <div style="display: grid; gap: 15px;">
+                    <button class="quick-btn" style="width: 100%; padding: 15px; font-size: 1rem;">
+                        📅 Nova Consulta
+                    </button>
+                    <button class="quick-btn" style="width: 100%; padding: 15px; font-size: 1rem;">
+                        🐾 Cadastrar Paciente
+                    </button>
+                    <button class="quick-btn" style="width: 100%; padding: 15px; font-size: 1rem;">
+                        💊 Estoque Medicamentos
+                    </button>
+                    <button class="quick-btn" style="width: 100%; padding: 15px; font-size: 1rem;">
+                        📊 Relatórios
+                    </button>
+                    <button class="quick-btn" style="width: 100%; padding: 15px; font-size: 1rem;">
+                        🚨 Emergências
+                    </button>
+                </div>
+            </div>
+            
+            <div class="section-card">
+                <h2 class="section-title">
+                    <span class="section-icon">👨‍⚕️</span>
+                    Veterinários Hoje
+                </h2>
+                
+                <div style="display: grid; gap: 10px;">
+                    <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                        <strong>Dra. Ana Silva</strong><br>
+                        <span style="color: #666;">Clínica Geral | 5/8 consultas</span><br>
+                        <span class="status confirmed" style="font-size: 0.8rem;">Disponível</span>
+                    </div>
+                    
+                    <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                        <strong>Dr. Roberto Silva</strong><br>
+                        <span style="color: #666;">Cirurgia | 2/6 consultas</span><br>
+                        <span class="status confirmed" style="font-size: 0.8rem;">Disponível</span>
+                    </div>
+                    
+                    <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                        <strong>Dra. Patrícia Santos</strong><br>
+                        <span style="color: #666;">Dermatologia | 6/6 consultas</span><br>
+                        <span class="status cancelled" style="font-size: 0.8rem;">Lotado</span>
+                    </div>
+                    
+                    <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                        <strong>Dra. Rafaela Oliveira</strong><br>
+                        <span style="color: #666;">Diagnóstico | 3/7 consultas</span><br>
+                        <span class="status confirmed" style="font-size: 0.8rem;">Disponível</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-card full-width">
+            <h2 class="section-title">
+                <span class="section-icon">📈</span>
+                Relatório Rápido
+            </h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                <div style="text-align: center;">
+                    <h3>Consultas esta Semana</h3>
+                    <div style="font-size: 2rem; color: #4ECDC4; font-weight: bold;">45</div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <h3>Novos Pacientes</h3>
+                    <div style="font-size: 2rem; color: #4ECDC4; font-weight: bold;">12</div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <h3>Faturamento Semanal</h3>
+                    <div style="font-size: 2rem; color: #4ECDC4; font-weight: bold;">R$ 8.500</div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <h3>Taxa de Satisfação</h3>
+                    <div style="font-size: 2rem; color: #4ECDC4; font-weight: bold;">98%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modais para edição -->
+    <div class="modal-overlay" id="edit-modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Editar Consulta</h3>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            
+            <div class="modal-tabs">
+                <div class="modal-tab active" data-tab="info-gerais">Informações Gerais</div>
+                <div class="modal-tab" data-tab="pet-info">Dados do Pet</div>
+                <div class="modal-tab" data-tab="obs-tab">Observações</div>
+            </div>
+            
+            <div class="modal-tab-content active" id="info-gerais">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="edit-owner-name">Nome do Proprietário</label>
+                        <input type="text" id="edit-owner-name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-owner-phone">Telefone</label>
+                        <input type="tel" id="edit-owner-phone" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="edit-vet">Veterinário</label>
+                        <select id="edit-vet" class="form-control">
+                            <option value="dra-ana">Dra. Ana Silva</option>
+                            <option value="dr-roberto">Dr. Roberto Silva</option>
+                            <option value="dra-patricia">Dra. Patrícia Santos</option>
+                            <option value="dra-rafaela">Dra. Rafaela Oliveira</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-type">Tipo de Consulta</label>
+                        <select id="edit-type" class="form-control">
+                            <option value="rotina">Consulta de Rotina</option>
+                            <option value="dermatologia">Dermatologia</option>
+                            <option value="ortopedia">Ortopedia</option>
+                            <option value="vacinacao">Vacinação</option>
+                            <option value="cirurgia">Cirurgia</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="edit-date">Data</label>
+                        <input type="date" id="edit-date" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-time">Horário</label>
+                        <select id="edit-time" class="form-control">
+                            <option value="09:00">09:00</option>
+                            <option value="09:30">09:30</option>
+                            <option value="10:00">10:00</option>
+                            <option value="10:30">10:30</option>
+                            <option value="11:00">11:00</option>
+                            <option value="11:30">11:30</option>
+                            <option value="14:00">14:00</option>
+                            <option value="14:30">14:30</option>
+                            <option value="15:00">15:00</option>
+                            <option value="15:30">15:30</option>
+                            <option value="16:00">16:00</option>
+                            <option value="16:30">16:30</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-status">Status</label>
+                    <select id="edit-status" class="form-control">
+                        <option value="pending">Aguardando</option>
+                        <option value="confirmed">Confirmado</option>
+                        <option value="cancelled">Cancelado</option>
+                        <option value="completed">Concluído</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="modal-tab-content" id="pet-info">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="edit-pet-name">Nome do Pet</label>
+                        <input type="text" id="edit-pet-name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-pet-type">Tipo de Animal</label>
+                        <select id="edit-pet-type" class="form-control">
+                            <option value="cachorro">Cachorro</option>
+                            <option value="gato">Gato</option>
+                            <option value="ave">Ave</option>
+                            <option value="roedor">Roedor</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="edit-pet-breed">Raça</label>
+                        <input type="text" id="edit-pet-breed" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-pet-age">Idade</label>
+                        <input type="text" id="edit-pet-age" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-pet-history">Histórico</label>
+                    <textarea id="edit-pet-history" class="form-control" rows="4"></textarea>
+                </div>
+            </div>
+            
+            <div class="modal-tab-content" id="obs-tab">
+                <div class="form-group">
+                    <label for="edit-observations">Observações para o Veterinário</label>
+                    <textarea id="edit-observations" class="form-control" rows="5"></textarea>
+                </div>
+                
+                <div class="form-group view-veterinario">
+                    <label for="edit-clinical-notes">Anotações Clínicas</label>
+                    <textarea id="edit-clinical-notes" class="form-control" rows="8"></textarea>
+                </div>
+            </div>
+            
+            <div class="modal-actions">
+                <button class="quick-btn secondary" onclick="closeModal()">Cancelar</button>
+                <button class="quick-btn" onclick="saveChanges()">Salvar Alterações</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de Prescrição -->
+    <div class="modal-overlay" id="prescription-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Prescrever Medicamento</h3>
+                <button class="close-modal" onclick="closeModal('prescription-modal')">&times;</button>
+            </div>
+            
+            <div class="form-group">
+                <label for="med-name">Nome do Medicamento</label>
+                <input type="text" id="med-name" class="form-control">
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="med-dosage">Dosagem</label>
+                    <input type="text" id="med-dosage" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="med-frequency">Frequência</label>
+                    <input type="text" id="med-frequency" class="form-control" placeholder="Ex: 8 em 8 horas">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="med-duration">Duração do Tratamento</label>
+                <input type="text" id="med-duration" class="form-control" placeholder="Ex: 7 dias">
+            </div>
+            
+            <div class="form-group">
+                <label for="med-instructions">Instruções Adicionais</label>
+                <textarea id="med-instructions" class="form-control" rows="3"></textarea>
+            </div>
+            
+            <div class="modal-actions">
+                <button class="quick-btn secondary" onclick="closeModal('prescription-modal')">Cancelar</button>
+                <button class="quick-btn" onclick="savePrescription()">Salvar Prescrição</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de Upload -->
+    <div class="modal-overlay" id="upload-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Anexar Arquivos</h3>
+                <button class="close-modal" onclick="closeModal('upload-modal')">&times;</button>
+            </div>
+            
+            <div style="border: 2px dashed #ddd; padding: 30px; text-align: center; margin-bottom: 20px; cursor: pointer;" onclick="simulateFileUpload()">
+                <div style="font-size: 40px; color: #ddd; margin-bottom: 15px;">📤</div>
+                <div style="margin-bottom: 10px;">Arraste arquivos ou clique para adicionar</div>
+                <div style="font-size: 12px; color: #999;">Suporta imagens, PDFs e documentos até 10MB</div>
+            </div>
+            
+            <div id="file-list" style="margin-top: 20px;">
+                <!-- Arquivos serão adicionados aqui -->
+            </div>
+            
+            <div class="modal-actions">
+                <button class="quick-btn secondary" onclick="closeModal('upload-modal')">Cancelar</button>
+                <button class="quick-btn" onclick="saveFiles()">Concluir Upload</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Notificação -->
+    <div class="notification" id="notification">
+        <div class="notification-icon">✓</div>
+        <div class="notification-message">Operação realizada com sucesso!</div>
+        <button class="notification-close" onclick="hideNotification()">&times;</button>
+    </div>
+    
+    <script>
+        // Variáveis globais
+        let currentAppointmentId = null;
+        let currentRole = null;
+        let editData = {};
+        
+        // Sistema de dados centralizado para sincronização
+        let appointmentsData = {
+            12345: {
+                id: 12345,
+                petName: 'Rex',
+                petType: 'Labrador',
+                petAge: '4 anos',
+                ownerName: 'Carlos Silva',
+                ownerPhone: '(11) 98765-4321',
+                veterinarian: 'Dra. Ana Silva',
+                consultationType: 'Consulta de Rotina',
+                date: '16/06/2025',
+                time: '10:30',
+                status: 'confirmed',
+                observations: 'Pet com perda de apetite há 3 dias. Letargia e redução de atividade.',
+                clinicalNotes: '',
+                prescriptions: [],
+                attachments: [],
+                lastModified: new Date().toISOString(),
+                modifiedBy: 'atendente'
+            },
+            12346: {
+                id: 12346,
+                petName: 'Mia',
+                petType: 'Persa',
+                petAge: '2 anos',
+                ownerName: 'Juliana Santos',
+                ownerPhone: '(11) 91234-5678',
+                veterinarian: 'Dr. Roberto Silva',
+                consultationType: 'Dermatologia',
+                date: '16/06/2025',
+                time: '11:00',
+                status: 'pending',
+                observations: 'Áreas de alopecia na região dorsal e prurido intenso há 2 semanas.',
+                clinicalNotes: 'Paciente apresenta lesões típicas de dermatite alérgica. Recomendo exames complementares para identificar o alérgeno.',
+                prescriptions: [],
+                attachments: [],
+                lastModified: new Date().toISOString(),
+                modifiedBy: 'veterinario'
+            },
+            12349: {
+                id: 12349,
+                petName: 'Thor',
+                petType: 'Bulldog',
+                petAge: '5 anos',
+                ownerName: 'Pedro Mendes',
+                ownerPhone: '(11) 95555-6666',
+                veterinarian: 'Dra. Patrícia Santos',
+                consultationType: 'Ortopedia',
+                date: '16/06/2025',
+                time: '16:00',
+                status: 'confirmed',
+                observations: 'Retorno para avaliação de claudicação em membro posterior direito.',
+                clinicalNotes: '',
+                prescriptions: [],
+                attachments: [],
+                lastModified: new Date().toISOString(),
+                modifiedBy: 'atendente'
+            }
+        };
+        
+        // Inicialização do sistema
+        document.addEventListener('DOMContentLoaded', function() {
+            // Carregar dados salvos do localStorage
+            loadSavedData();
+            
+            // Atualizar data atual
+            const today = new Date();
+            const dateStr = today.toLocaleDateString('pt-BR', { 
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric' 
+            });
+            document.getElementById('current-date').textContent = dateStr;
+            
+            // Simular usuário logado
+            const currentUser = localStorage.getItem('username') || 'admin';
+            document.getElementById('current-user').textContent = `Usuário: ${currentUser}`;
+            
+            // Configurar alternância de abas nos modais
+            setupTabNavigation();
+            
+            // Configurar alternância de visualização (atendente/veterinário)
+            setupRoleToggle();
+            
+            // Definir data atual no campo de edição
+            document.getElementById('edit-date').value = formatDateForInput(new Date());
+            
+            // Configurar observador de mudanças para sincronização
+            setupDataSync();
+            
+            // Atualizar interface com dados atuais
+            refreshInterface();
+        });
+        
+        // Carregar dados salvos do localStorage
+        function loadSavedData() {
+            const savedData = localStorage.getItem('appointmentsData');
+            if (savedData) {
+                try {
+                    appointmentsData = JSON.parse(savedData);
+                } catch (e) {
+                    console.warn('Erro ao carregar dados salvos:', e);
+                }
+            }
+        }
+        
+        // Salvar dados no localStorage
+        function saveData() {
+            localStorage.setItem('appointmentsData', JSON.stringify(appointmentsData));
+        }
+        
+        // Configurar sistema de sincronização de dados
+        function setupDataSync() {
+            // Simular sincronização em tempo real usando polling
+            setInterval(function() {
+                // Em um sistema real, isso seria uma chamada WebSocket ou Server-Sent Events
+                checkForUpdates();
+            }, 2000); // Verificar atualizações a cada 2 segundos
+        }
+        
+        // Verificar atualizações (simula sincronização em tempo real)
+        function checkForUpdates() {
+            // Em um sistema real, isso consultaria o servidor
+            // Aqui vamos apenas verificar se há alterações no localStorage de outras abas
+            const currentData = localStorage.getItem('appointmentsData');
+            if (currentData) {
+                const parsedData = JSON.parse(currentData);
+                
+                // Verificar se há mudanças
+                let hasChanges = false;
+                let changedAppointments = [];
+                
+                for (const id in parsedData) {
+                    if (JSON.stringify(parsedData[id]) !== JSON.stringify(appointmentsData[id])) {
+                        hasChanges = true;
+                        changedAppointments.push({
+                            id: id,
+                            petName: parsedData[id].petName,
+                            modifiedBy: parsedData[id].modifiedBy
+                        });
+                    }
+                }
+                
+                if (hasChanges) {
+                    appointmentsData = parsedData;
+                    refreshInterface();
+                    
+                    // Mostrar notificação específica sobre quais consultas foram alteradas
+                    if (changedAppointments.length === 1) {
+                        const changed = changedAppointments[0];
+                        const userType = changed.modifiedBy === 'atendente' ? 'Atendente' : 'Veterinário';
+                        showNotification(`${changed.petName}: Atualizado por ${userType}`, 'info');
+                    } else if (changedAppointments.length > 1) {
+                        showNotification(`${changedAppointments.length} consultas atualizadas automaticamente`, 'info');
+                    }
+                    
+                    // Atualizar indicador de sincronização
+                    updateSyncStatus('synced');
+                }
+            }
+        }
+        
+        // Atualizar indicador de status de sincronização
+        function updateSyncStatus(status) {
+            const syncStatus = document.getElementById('sync-status');
+            if (!syncStatus) return;
+            
+            switch (status) {
+                case 'syncing':
+                    syncStatus.innerHTML = '🔄 Sincronizando...';
+                    syncStatus.style.color = '#f39c12';
+                    break;
+                case 'synced':
+                    syncStatus.innerHTML = '✅ Sincronizado';
+                    syncStatus.style.color = '#2ecc71';
+                    // Voltar ao normal após 2 segundos
+                    setTimeout(() => {
+                        syncStatus.innerHTML = '🔄 Sincronizado';
+                        syncStatus.style.color = '#e8f4f8';
+                    }, 2000);
+                    break;
+                case 'error':
+                    syncStatus.innerHTML = '❌ Erro na sincronização';
+                    syncStatus.style.color = '#e74c3c';
+                    break;
+                default:
+                    syncStatus.innerHTML = '🔄 Sincronizado';
+                    syncStatus.style.color = '#e8f4f8';
+            }
+        }
+        
+        // Atualizar dados de uma consulta
+        function updateAppointmentData(appointmentId, updates, modifiedBy = 'system') {
+            if (appointmentsData[appointmentId]) {
+                // Mostrar indicador de sincronização
+                updateSyncStatus('syncing');
+                
+                // Mesclar atualizações
+                Object.assign(appointmentsData[appointmentId], updates);
+                
+                // Registrar metadados da modificação
+                appointmentsData[appointmentId].lastModified = new Date().toISOString();
+                appointmentsData[appointmentId].modifiedBy = modifiedBy;
+                
+                // Salvar no localStorage
+                saveData();
+                
+                // Simular delay de rede (opcional, para efeito visual)
+                setTimeout(() => {
+                    // Atualizar interface
+                    refreshInterface();
+                    
+                    // Atualizar status de sincronização
+                    updateSyncStatus('synced');
+                }, 300);
+                
+                return true;
+            }
+            return false;
+        }
+        
+        // Atualizar toda a interface com dados atuais
+        function refreshInterface() {
+            for (const id in appointmentsData) {
+                const data = appointmentsData[id];
+                updateAppointmentDisplay(id, data);
+            }
+        }
+        
+        // Atualizar exibição de uma consulta específica
+        function updateAppointmentDisplay(appointmentId, data) {
+            const appointmentElem = document.querySelector(`[data-id="${appointmentId}"]`);
+            if (!appointmentElem) return;
+            
+            // Atualizar informações básicas
+            const petNameElem = appointmentElem.querySelector('h3');
+            if (petNameElem) {
+                petNameElem.textContent = `${data.petName} (${data.petType}) - ${data.petAge}`;
+            }
+            
+            const ownerElem = appointmentElem.querySelector('p');
+            if (ownerElem) {
+                ownerElem.textContent = `Proprietário: ${data.ownerName}`;
+            }
+            
+            const timeElem = appointmentElem.querySelector('.appointment-time-unified');
+            if (timeElem) {
+                timeElem.textContent = data.time;
+            }
+            
+            // Atualizar detalhes
+            const detailsElem = appointmentElem.querySelector('.appointment-details-unified');
+            if (detailsElem) {
+                const vetDiv = detailsElem.querySelector('div:first-child');
+                if (vetDiv) {
+                    vetDiv.innerHTML = `<strong>Veterinário:</strong><br>${data.veterinarian}`;
+                }
+                
+                const typeDiv = detailsElem.querySelector('div:nth-child(2)');
+                if (typeDiv) {
+                    typeDiv.innerHTML = `<strong>Tipo:</strong><br>${data.consultationType}`;
+                }
+                
+                const statusDiv = detailsElem.querySelector('div:nth-child(3)');
+                if (statusDiv) {
+                    const statusSpan = statusDiv.querySelector('.status') || statusDiv.querySelector(`#status-${appointmentId}`);
+                    if (statusSpan) {
+                        statusSpan.textContent = getStatusText(data.status);
+                        statusSpan.className = `status ${data.status}`;
+                    }
+                }
+            }
+            
+            // Atualizar observações
+            const obsElem = document.getElementById(`obs-${appointmentId}`);
+            if (obsElem) {
+                obsElem.textContent = data.observations;
+            }
+            
+            // Atualizar anotações clínicas
+            const notesElem = document.getElementById(`notes-${appointmentId}`);
+            if (notesElem) {
+                notesElem.value = data.clinicalNotes;
+            }
+            
+            // Destacar item se foi modificado recentemente
+            const lastModified = new Date(data.lastModified);
+            const now = new Date();
+            const timeDiff = now - lastModified;
+            
+            if (timeDiff < 30000) { // Menos de 30 segundos
+                appointmentElem.style.borderLeft = '4px solid #FFD700';
+                setTimeout(() => {
+                    appointmentElem.style.borderLeft = '4px solid #4ECDC4';
+                }, 5000);
+            }
+        }
+        
+        // Converter status para texto
+        function getStatusText(status) {
+            const statusMap = {
+                'pending': 'Aguardando',
+                'confirmed': 'Confirmado',
+                'cancelled': 'Cancelado',
+                'completed': 'Concluído',
+                'in-progress': 'Em Atendimento'
+            };
+            return statusMap[status] || status;
+        }
+        
+        // Configurar navegação por abas nos modais
+        function setupTabNavigation() {
+            const tabItems = document.querySelectorAll('.modal-tab');
+            tabItems.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const target = this.getAttribute('data-tab');
+                    
+                    // Atualizar aba ativa
+                    document.querySelectorAll('.modal-tab').forEach(t => 
+                        t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Mostrar conteúdo correspondente
+                    document.querySelectorAll('.modal-tab-content').forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === target) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+        }
+        
+        // Configurar alternância de visualização (atendente/veterinário)
+        function setupRoleToggle() {
+            const roleButtons = document.querySelectorAll('.role-btn');
+            const appContainer = document.getElementById('app-container');
+            
+            roleButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const role = this.getAttribute('data-role');
+                    
+                    // Atualizar botão ativo
+                    roleButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Atualizar visualização
+                    appContainer.className = '';
+                    appContainer.classList.add(`role-${role}`);
+                    
+                    // Mostrar notificação
+                    if (role === 'atendente') {
+                        showNotification('Modo Atendente ativado');
+                    } else if (role === 'veterinario') {
+                        showNotification('Modo Veterinário ativado');
+                    } else {
+                        showNotification('Visualização completa ativada');
+                    }
+                });
+            });
+        }
+        
+        // Abrir modal de edição
+        function openEditModal(role, appointmentId) {
+            currentAppointmentId = appointmentId;
+            currentRole = role;
+            
+            // Obter dados atuais da consulta
+            const data = appointmentsData[appointmentId];
+            if (!data) {
+                showNotification('Consulta não encontrada', 'error');
+                return;
+            }
+            
+            // Preencher os campos do formulário com dados atuais
+            document.getElementById('edit-pet-name').value = data.petName;
+            document.getElementById('edit-pet-age').value = data.petAge;
+            document.getElementById('edit-owner-name').value = data.ownerName;
+            document.getElementById('edit-owner-phone').value = data.ownerPhone || '';
+            document.getElementById('edit-observations').value = data.observations;
+            
+            // Converter data para formato do input
+            if (data.date) {
+                const dateParts = data.date.split('/');
+                if (dateParts.length === 3) {
+                    const formattedDate = `${dateParts[2]}-${dateParts[1].padStart(2, '0')}-${dateParts[0].padStart(2, '0')}`;
+                    document.getElementById('edit-date').value = formattedDate;
+                }
+            }
+            
+            // Definir outros campos se disponíveis
+            if (data.time) document.getElementById('edit-time').value = data.time;
+            if (data.status) document.getElementById('edit-status').value = data.status;
+            
+            // Preencher campos específicos do veterinário
+            if (role === 'veterinario' && document.getElementById('edit-clinical-notes')) {
+                document.getElementById('edit-clinical-notes').value = data.clinicalNotes || '';
+            }
+            
+            // Definir selects com base nos dados
+            setSelectValue('edit-vet', data.veterinarian);
+            setSelectValue('edit-type', data.consultationType);
+            
+            // Mostrar a aba apropriada com base no papel
+            if (role === 'atendente') {
+                document.querySelector('[data-tab="info-gerais"]').click();
+            } else {
+                document.querySelector('[data-tab="obs-tab"]').click();
+            }
+            
+            // Abrir o modal
+            document.getElementById('edit-modal-overlay').classList.add('active');
+        }
+        
+        // Definir valor de select com base no texto
+        function setSelectValue(selectId, text) {
+            const select = document.getElementById(selectId);
+            if (!select || !text) return;
+            
+            for (let option of select.options) {
+                if (option.text.includes(text) || text.includes(option.text)) {
+                    select.value = option.value;
+                    break;
+                }
+            }
+        }
+        
+        // Fechar modal
+        function closeModal(modalId = 'edit-modal-overlay') {
+            document.getElementById(modalId).classList.remove('active');
+        }
+        
+        // Salvar alterações
+        function saveChanges() {
+            // Coletar dados do formulário
+            const petName = document.getElementById('edit-pet-name').value;
+            const petAge = document.getElementById('edit-pet-age').value;
+            const ownerName = document.getElementById('edit-owner-name').value;
+            const ownerPhone = document.getElementById('edit-owner-phone').value;
+            const veterinarian = document.getElementById('edit-vet').value;
+            const consultationType = document.getElementById('edit-type').value;
+            const date = document.getElementById('edit-date').value;
+            const time = document.getElementById('edit-time').value;
+            const status = document.getElementById('edit-status').value;
+            const observations = document.getElementById('edit-observations').value;
+            const clinicalNotes = document.getElementById('edit-clinical-notes')?.value || '';
+            
+            // Preparar objeto de atualizações
+            const updates = {
+                petName: petName,
+                petAge: petAge,
+                ownerName: ownerName,
+                ownerPhone: ownerPhone,
+                observations: observations
+            };
+            
+            // Adicionar campos específicos se preenchidos
+            if (veterinarian) updates.veterinarian = getVetNameFromValue(veterinarian);
+            if (consultationType) updates.consultationType = getTypeNameFromValue(consultationType);
+            if (date) updates.date = formatDateForDisplay(date);
+            if (time) updates.time = time;
+            if (status) updates.status = status;
+            if (clinicalNotes) updates.clinicalNotes = clinicalNotes;
+            
+            // Determinar quem está fazendo a alteração
+            const modifiedBy = currentRole || 'system';
+            
+            // Atualizar dados centralizados
+            const success = updateAppointmentData(currentAppointmentId, updates, modifiedBy);
+            
+            if (success) {
+                // Fechar o modal
+                closeModal();
+                
+                // Mostrar notificação de sucesso
+                showNotification('Alterações salvas e sincronizadas com sucesso!');
+                
+                // Se foi reagendamento, mostrar notificação específica
+                if (date || time) {
+                    showNotification(`Consulta reagendada para ${updates.date} às ${updates.time}`, 'info');
+                }
+            } else {
+                showNotification('Erro ao salvar alterações', 'error');
+            }
+        }
+        
+        // Converter valor do select para nome do veterinário
+        function getVetNameFromValue(value) {
+            const vetMap = {
+                'dra-ana': 'Dra. Ana Silva',
+                'dr-roberto': 'Dr. Roberto Silva',
+                'dra-patricia': 'Dra. Patrícia Santos',
+                'dra-rafaela': 'Dra. Rafaela Oliveira'
+            };
+            return vetMap[value] || value;
+        }
+        
+        // Converter valor do select para nome do tipo de consulta
+        function getTypeNameFromValue(value) {
+            const typeMap = {
+                'rotina': 'Consulta de Rotina',
+                'dermatologia': 'Dermatologia',
+                'ortopedia': 'Ortopedia',
+                'vacinacao': 'Vacinação',
+                'cirurgia': 'Cirurgia'
+            };
+            return typeMap[value] || value;
+        }
+        
+        // Formatar data para exibição
+        function formatDateForDisplay(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('pt-BR');
+        }
+        
+        // Salvar anotações clínicas
+        function saveNotes(appointmentId) {
+            const notes = document.getElementById(`notes-${appointmentId}`).value;
+            
+            // Atualizar dados centralizados
+            const success = updateAppointmentData(appointmentId, {
+                clinicalNotes: notes
+            }, 'veterinario');
+            
+            if (success) {
+                showNotification('Anotação clínica salva e sincronizada com sucesso!');
+            } else {
+                showNotification('Erro ao salvar anotação', 'error');
+            }
+        }
+        
+        // Abrir modal de prescrição
+        function openPrescriptionModal(appointmentId) {
+            currentAppointmentId = appointmentId;
+            document.getElementById('prescription-modal').classList.add('active');
+        }
+        
+        // Salvar prescrição
+        function savePrescription() {
+            // Coletar dados do formulário
+            const medName = document.getElementById('med-name').value;
+            const medDosage = document.getElementById('med-dosage').value;
+            const medFrequency = document.getElementById('med-frequency').value;
+            const medDuration = document.getElementById('med-duration').value;
+            const medInstructions = document.getElementById('med-instructions').value;
+            
+            // Validação básica
+            if (!medName || !medDosage) {
+                showNotification('Preencha os campos obrigatórios!', 'error');
+                return;
+            }
+            
+            // Criar objeto da prescrição
+            const prescription = {
+                id: Date.now(),
+                medication: medName,
+                dosage: medDosage,
+                frequency: medFrequency,
+                duration: medDuration,
+                instructions: medInstructions,
+                prescribedAt: new Date().toISOString(),
+                prescribedBy: localStorage.getItem('username') || 'Veterinário'
+            };
+            
+            // Obter prescrições atuais e adicionar a nova
+            const currentData = appointmentsData[currentAppointmentId];
+            const prescriptions = currentData.prescriptions || [];
+            prescriptions.push(prescription);
+            
+            // Atualizar dados centralizados
+            const success = updateAppointmentData(currentAppointmentId, {
+                prescriptions: prescriptions
+            }, 'veterinario');
+            
+            if (success) {
+                closeModal('prescription-modal');
+                showNotification('Prescrição salva e sincronizada com sucesso!');
+                
+                // Limpar formulário
+                document.getElementById('med-name').value = '';
+                document.getElementById('med-dosage').value = '';
+                document.getElementById('med-frequency').value = '';
+                document.getElementById('med-duration').value = '';
+                document.getElementById('med-instructions').value = '';
+            } else {
+                showNotification('Erro ao salvar prescrição', 'error');
+            }
+        }
+        
+        // Abrir modal de upload
+        function openUploadModal(appointmentId) {
+            currentAppointmentId = appointmentId;
+            document.getElementById('upload-modal').classList.add('active');
+        }
+        
+        // Simular upload de arquivo
+        function simulateFileUpload() {
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.multiple = true;
+            fileInput.accept = 'image/*,.pdf,.doc,.docx';
+            
+            fileInput.onchange = function() {
+                if (this.files.length) {
+                    for (let i = 0; i < this.files.length; i++) {
+                        const file = this.files[i];
+                        addFileToList(file.name, formatFileSize(file.size));
+                    }
+                }
+            };
+            
+            fileInput.click();
+        }
+        
+        // Adicionar arquivo à lista
+        function addFileToList(fileName, fileSize) {
+            const fileList = document.getElementById('file-list');
+            const fileItem = document.createElement('div');
+            fileItem.style.display = 'flex';
+            fileItem.style.alignItems = 'center';
+            fileItem.style.marginBottom = '10px';
+            fileItem.style.padding = '10px';
+            fileItem.style.backgroundColor = '#f9f9f9';
+            fileItem.style.borderRadius = '5px';
+            
+            fileItem.innerHTML = `
+                <div style="margin-right: 10px;">📎</div>
+                <div style="flex: 1;">${fileName}</div>
+                <div style="margin-right: 10px; color: #999;">${fileSize}</div>
+                <div style="cursor: pointer; color: #e74c3c;" onclick="this.parentNode.remove()">🗑️</div>
+            `;
+            
+            fileList.appendChild(fileItem);
+        }
+        
+        // Salvar arquivos
+        function saveFiles() {
+            const fileList = document.getElementById('file-list');
+            const fileCount = fileList.children.length;
+            
+            if (fileCount === 0) {
+                showNotification('Nenhum arquivo selecionado', 'error');
+                return;
+            }
+            
+            // Coletar informações dos arquivos
+            const attachments = [];
+            for (let i = 0; i < fileList.children.length; i++) {
+                const fileItem = fileList.children[i];
+                const fileName = fileItem.querySelector('div:nth-child(2)').textContent;
+                const fileSize = fileItem.querySelector('div:nth-child(3)').textContent;
+                
+                attachments.push({
+                    id: Date.now() + i,
+                    name: fileName,
+                    size: fileSize,
+                    uploadedAt: new Date().toISOString(),
+                    uploadedBy: localStorage.getItem('username') || 'Usuário'
+                });
+            }
+            
+            // Obter anexos atuais e adicionar os novos
+            const currentData = appointmentsData[currentAppointmentId];
+            const currentAttachments = currentData.attachments || [];
+            const updatedAttachments = [...currentAttachments, ...attachments];
+            
+            // Atualizar dados centralizados
+            const success = updateAppointmentData(currentAppointmentId, {
+                attachments: updatedAttachments
+            }, 'veterinario');
+            
+            if (success) {
+                closeModal('upload-modal');
+                showNotification(`${fileCount} arquivo(s) anexado(s) e sincronizado(s) com sucesso!`);
+                
+                // Limpar a lista de arquivos após o upload
+                fileList.innerHTML = '';
+            } else {
+                showNotification('Erro ao anexar arquivos', 'error');
+            }
+        }
+        
+        // Alterar status da consulta
+        function changeStatus(appointmentId, newStatus) {
+            let statusValue, statusText, notificationMsg;
+            
+            if (newStatus === 'atendimento') {
+                statusValue = 'in-progress';
+                statusText = 'Em Atendimento';
+                notificationMsg = 'Atendimento iniciado!';
+            } else if (newStatus === 'completed') {
+                statusValue = 'completed';
+                statusText = 'Concluído';
+                notificationMsg = 'Atendimento concluído!';
+            } else if (newStatus === 'cancelled') {
+                statusValue = 'cancelled';
+                statusText = 'Cancelado';
+                notificationMsg = 'Consulta cancelada!';
+            }
+            
+            // Atualizar dados centralizados
+            const success = updateAppointmentData(appointmentId, {
+                status: statusValue
+            }, 'atendente');
+            
+            if (success) {
+                showNotification(notificationMsg + ' - Sincronizado automaticamente');
+            } else {
+                showNotification('Erro ao alterar status', 'error');
+            }
+        }
+        
+        // Cancelar consulta
+        function cancelAppointment(appointmentId) {
+            if (confirm('Deseja realmente cancelar esta consulta?')) {
+                changeStatus(appointmentId, 'cancelled');
+            }
+        }
+        
+        // Abrir modal de reagendamento
+        function openRescheduleModal(appointmentId) {
+            currentAppointmentId = appointmentId;
+            openEditModal('atendente', appointmentId);
+            
+            // Focar nas abas de data/hora
+            document.querySelector('[data-tab="info-gerais"]').click();
+            
+            showNotification('Selecione uma nova data e horário');
+        }
+        
+        // Mostrar notificação
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            const notificationMessage = notification.querySelector('.notification-message');
+            const notificationIcon = notification.querySelector('.notification-icon');
+            
+            // Definir ícone e cor com base no tipo
+            if (type === 'success') {
+                notificationIcon.textContent = '✓';
+                notification.style.borderLeft = '4px solid #4ECDC4';
+            } else if (type === 'error') {
+                notificationIcon.textContent = '✕';
+                notification.style.borderLeft = '4px solid #e74c3c';
+            } else if (type === 'info') {
+                notificationIcon.textContent = 'ℹ️';
+                notification.style.borderLeft = '4px solid #3498db';
+            } else {
+                notificationIcon.textContent = '⚠️';
+                notification.style.borderLeft = '4px solid #f39c12';
+            }
+            
+            // Definir mensagem
+            notificationMessage.textContent = message;
+            
+            // Mostrar notificação
+            notification.classList.add('active');
+            
+            // Esconder automaticamente após 4 segundos (mais tempo para ler mensagens de sincronização)
+            setTimeout(hideNotification, 4000);
+        }
+        
+        // Esconder notificação
+        function hideNotification() {
+            const notification = document.getElementById('notification');
+            notification.classList.remove('active');
+        }
+        
+        // Funções utilitárias
+        function formatFileSize(bytes) {
+            if (bytes < 1024) return bytes + ' bytes';
+            else if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+            else return (bytes / 1048576).toFixed(1) + ' MB';
+        }
+        
+        function formatDateForInput(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+    </script>
+</body>
+</html>

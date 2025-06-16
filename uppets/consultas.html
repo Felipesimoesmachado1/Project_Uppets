@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPPET - Agendamento de Consultas</title>
+    <link rel="stylesheet" href="css/consultas.css" />
+    <script src="js/consultas.js"></script>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="/0lohj5749v.png" alt="">
+                UPPETS <span>sistem</span>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html">Início</a></li>
+                    <li class="nav-item"><a href="veterinarios.html">Veterinários</a></li>
+                    <li class="nav-item"><a href="emergencia.html" class="active">Emergência</a></li>
+                    <li class="nav-item"><a href="consultas.html">Consultas</a></li>                       
+                    </ul>
+                </nav>
+            </aside>
+
+        <main class="main-content">
+            <div class="header">
+                <h1>Agendamento de Consultas</h1>
+                <p>Cuide da saúde do seu pet com nossos serviços de consultas especializadas</p>
+            </div>
+
+            <div class="appointment-banner">
+                <div class="banner-text">
+                    <h2>Agende uma consulta para seu pet</h2>
+                    <p>Na Clínica Veterinária UPPET, nós sabemos o quanto seu animal é importante para você. Por isso, oferecemos um sistema simples e eficiente para agendar consultas com nossos especialistas.</p>
+                    <p>Você pode escolher o veterinário, a data e o horário mais convenientes, além de selecionar o tipo de atendimento que seu pet necessita.</p>
+                    <a href="#formulario" class="schedule-btn">Agendar Agora</a>
+                </div>
+                <div class="banner-image">
+                    <img src="https://medmax.com.br/wp-content/uploads/2022/11/servicos-veterinarios-mais-procurados-capa-blogpost.jpg" alt="Veterinário e cachorro">
+                </div>
+            </div>
+
+            <div class="appointment-types">
+                <div class="appointment-card">
+                    <h3>Consulta de Rotina</h3>
+                    <p>Exame clínico completo para avaliar a saúde geral do seu pet.</p>
+                    <ul>
+                        <li>Avaliação física completa</li>
+                        <li>Verificação de peso e sinais vitais</li>
+                        <li>Orientações nutricionais</li>
+                        <li>Verificação do calendário de vacinas</li>
+                        <li>Duração: aproximadamente 30 minutos</li>
+                    </ul>
+                    <div class="price-tag">R$ 120,00</div>
+                    <a href="#formulario" class="schedule-btn">Agendar</a>
+                </div>
+
+                <div class="appointment-card">
+                    <h3>Consulta Especializada</h3>
+                    <p>Atendimento com especialistas em áreas específicas da medicina veterinária.</p>
+                    <ul>
+                        <li>Dermatologia</li>
+                        <li>Cardiologia</li>
+                        <li>Ortopedia</li>
+                        <li>Oftalmologia</li>
+                        <li>Duração: aproximadamente 45 minutos</li>
+                    </ul>
+                    <div class="price-tag">R$ 180,00</div>
+                    <a href="#formulario" class="schedule-btn">Agendar</a>
+                </div>
+
+                <div class="appointment-card">
+                    <h3>Vacinação</h3>
+                    <p>Proteja seu pet contra doenças com nosso programa de vacinação.</p>
+                    <ul>
+                        <li>Avaliação pré-vacinação</li>
+                        <li>Vacinas importadas de alta qualidade</li>
+                        <li>Carteirinha de vacinação</li>
+                        <li>Orientações pós-vacina</li>
+                        <li>Duração: aproximadamente 20 minutos</li>
+                    </ul>
+                    <div class="price-tag">A partir de R$ 90,00</div>
+                    <a href="#formulario" class="schedule-btn">Agendar</a>
+                </div>
+            </div>
+
+            <div class="calendar-section">
+                <h3>Disponibilidade</h3>
+                <p>Selecione uma data e horário disponíveis para sua consulta:</p>
+                
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button class="calendar-nav">&#8249;</button>
+                        <div class="calendar-month">Junho 2025</div>
+                        <button class="calendar-nav">&#8250;</button>
+                    </div>
+                    
+                    <div class="calendar-grid">
+                        <div class="calendar-day-name">Dom</div>
+                        <div class="calendar-day-name">Seg</div>
+                        <div class="calendar-day-name">Ter</div>
+                        <div class="calendar-day-name">Qua</div>
+                        <div class="calendar-day-name">Qui</div>
+                        <div class="calendar-day-name">Sex</div>
+                        <div class="calendar-day-name">Sáb</div>
+                        
+                        <div class="calendar-day unavailable">26</div>
+                        <div class="calendar-day unavailable">27</div>
+                        <div class="calendar-day unavailable">28</div>
+                        <div class="calendar-day unavailable">29</div>
+                        <div class="calendar-day unavailable">30</div>
+                        <div class="calendar-day unavailable">31</div>
+                        <div class="calendar-day">1</div>
+                        
+                        <div class="calendar-day unavailable">2</div>
+                        <div class="calendar-day available">3</div>
+                        <div class="calendar-day available">4</div>
+                        <div class="calendar-day available">5</div>
+                        <div class="calendar-day available">6</div>
+                        <div class="calendar-day available">7</div>
+                        <div class="calendar-day">8</div>
+                        
+                        <div class="calendar-day unavailable">9</div>
+                        <div class="calendar-day available">10</div>
+                        <div class="calendar-day available selected">11</div>
+                        <div class="calendar-day available">12</div>
+                        <div class="calendar-day available">13</div>
+                        <div class="calendar-day available">14</div>
+                        <div class="calendar-day">15</div>
+                        
+                        <div class="calendar-day unavailable">16</div>
+                        <div class="calendar-day available">17</div>
+                        <div class="calendar-day available">18</div>
+                        <div class="calendar-day available">19</div>
+                        <div class="calendar-day available">20</div>
+                        <div class="calendar-day available">21</div>
+                        <div class="calendar-day">22</div>
+                        
+                        <div class="calendar-day unavailable">23</div>
+                        <div class="calendar-day available">24</div>
+                        <div class="calendar-day available">25</div>
+                        <div class="calendar-day available">26</div>
+                        <div class="calendar-day available">27</div>
+                        <div class="calendar-day available">28</div>
+                        <div class="calendar-day">29</div>
+                        
+                        <div class="calendar-day unavailable">30</div>
+                        <div class="calendar-day available">1</div>
+                        <div class="calendar-day available">2</div>
+                        <div class="calendar-day available">3</div>
+                        <div class="calendar-day available">4</div>
+                        <div class="calendar-day available">5</div>
+                        <div class="calendar-day">6</div>
+                    </div>
+                    
+                    <div class="time-slots">
+                        <div class="time-slot">09:00</div>
+                        <div class="time-slot">09:30</div>
+                        <div class="time-slot">10:00</div>
+                        <div class="time-slot selected">10:30</div>
+                        <div class="time-slot">11:00</div>
+                        <div class="time-slot">11:30</div>
+                        <div class="time-slot">14:00</div>
+                        <div class="time-slot">14:30</div>
+                        <div class="time-slot">15:00</div>
+                        <div class="time-slot">15:30</div>
+                        <div class="time-slot">16:00</div>
+                        <div class="time-slot">16:30</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="schedule-form" id="formulario">
+                <h2>Formulário de Agendamento</h2>
+                <form id="appointment-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="pet-name">Nome do Pet</label>
+                            <input type="text" id="pet-name" name="pet-name" placeholder="Nome do seu pet" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pet-type">Tipo de Animal</label>
+                            <select id="pet-type" name="pet-type" required>
+                                <option value="">Selecione</option>
+                                <option value="cachorro">Cachorro</option>
+                                <option value="gato">Gato</option>
+                                <option value="ave">Ave</option>
+                                <option value="roedor">Roedor</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="pet-breed">Raça</label>
+                            <input type="text" id="pet-breed" name="pet-breed" placeholder="Raça do seu pet">
+                        </div>
+                        <div class="form-group">
+                            <label for="pet-age">Idade</label>
+                            <input type="text" id="pet-age" name="pet-age" placeholder="Idade do seu pet" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="owner-name">Seu Nome</label>
+                            <input type="text" id="owner-name" name="owner-name" placeholder="Nome completo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="owner-phone">Telefone</label>
+                            <input type="tel" id="owner-phone" name="owner-phone" placeholder="(00) 00000-0000" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="owner-email">Email</label>
+                            <input type="email" id="owner-email" name="owner-email" placeholder="seu@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="appointment-type">Tipo de Consulta</label>
+                            <select id="appointment-type" name="appointment-type" required>
+                                <option value="">Selecione</option>
+                                <option value="rotina">Consulta de Rotina</option>
+                                <option value="especializada">Consulta Especializada</option>
+                                <option value="vacinacao">Vacinação</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="appointment-date">Data</label>
+                            <input type="date" id="appointment-date" name="appointment-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="appointment-time">Horário</label>
+                            <select id="appointment-time" name="appointment-time" required>
+                                <option value="">Selecione</option>
+                                <option value="09:00">09:00</option>
+                                <option value="09:30">09:30</option>
+                                <option value="10:00">10:00</option>
+                                <option value="10:30">10:30</option>
+                                <option value="11:00">11:00</option>
+                                <option value="11:30">11:30</option>
+                                <option value="14:00">14:00</option>
+                                <option value="14:30">14:30</option>
+                                <option value="15:00">15:00</option>
+                                <option value="15:30">15:30</option>
+                                <option value="16:00">16:00</option>
+                                <option value="16:30">16:30</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="appointment-notes">Observações</label>
+                        <textarea id="appointment-notes" name="appointment-notes" placeholder="Descreva os sintomas ou motivo da consulta"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Confirmar Agendamento</button>
+                </form>
+            </div>
+
+            <div class="faq-section">
+                <h2>Perguntas Frequentes</h2>
+                <div class="faq-container">
+                    <div class="faq-item active">
+                        <div class="faq-question">Como posso agendar uma consulta?</div>
+                        <div class="faq-answer">
+                            Você pode agendar uma consulta preenchendo o formulário nesta página, ligando para nosso telefone (11) 99999-9999 ou enviando uma mensagem pelo WhatsApp. Nossa equipe entrará em contato para confirmar sua consulta.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Preciso trazer algo para a consulta?</div>
+                        <div class="faq-answer">
+                            Sim, é importante trazer a carteirinha de vacinação do seu pet, histórico médico anterior (se houver) e anotações sobre sintomas ou comportamentos que você observou. Se for a primeira consulta, é recomendável chegar com 15 minutos de antecedência para cadastro.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Quanto tempo dura uma consulta?</div>
+                        <div class="faq-answer">
+                            Uma consulta de rotina dura aproximadamente 30 minutos. Consultas especializadas podem durar entre 40 a 60 minutos, dependendo da complexidade do caso. Procedimentos de vacinação geralmente levam cerca de 20 minutos.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Posso remarcar ou cancelar minha consulta?</div>
+                        <div class="faq-answer">
+                            Sim, você pode remarcar ou cancelar sua consulta com até 24 horas de antecedência sem custo adicional. Para cancelamentos com menos de 24 horas, poderá ser cobrada uma taxa de remarcação. Entre em contato conosco por telefone ou WhatsApp para ajustes em seu agendamento.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Quais formas de pagamento são aceitas?</div>
+                        <div class="faq-answer">
+                            Aceitamos dinheiro, cartões de crédito e débito, PIX e transferência bancária. Para consultas especializadas e procedimentos mais complexos, oferecemos opções de parcelamento em até 3x sem juros no cartão de crédito.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Vocês atendem emergências?</div>
+                        <div class="faq-answer">
+                            Sim, nossa clínica conta com serviço de emergência 24 horas. Para casos urgentes, não é necessário agendamento prévio. Basta comparecer à nossa unidade ou ligar para o número de emergência (11) 9999-URGENTE.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonials">
+                <h2>Depoimentos de Clientes</h2>
+                <div class="testimonials-container">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"O sistema de agendamento online da UPPET é super prático! Consegui marcar uma consulta para meu cachorro em menos de 5 minutos. O atendimento foi pontual e a equipe muito atenciosa."</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">MS</div>
+                                <div class="author-info">
+                                    <h4>Maria Silva</h4>
+                                    <p>Tutora do Rex</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"Sempre marco as consultas da Luna pela internet. O calendário mostra os horários disponíveis em tempo real e recebo lembretes por email e WhatsApp, o que me ajuda muito a não esquecer!"</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">CP</div>
+                                <div class="author-info">
+                                    <h4>Carlos Pereira</h4>
+                                    <p>Tutor da Luna</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"Minha gatinha precisou de atendimento com um especialista em dermatologia. O processo de agendamento foi simples e consegui uma consulta para a mesma semana. Recomendo muito!"</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">JR</div>
+                                <div class="author-info">
+                                    <h4>Juliana Rodrigues</h4>
+                                    <p>Tutora da Mia</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

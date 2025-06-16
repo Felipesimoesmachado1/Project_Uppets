@@ -1,0 +1,459 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPPET - Nossos Veterinários</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 300px;
+            background: linear-gradient(135deg, #4ECDC4, #44A08D);
+            color: white;
+            padding: 30px 20px;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 50px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            max-width: 80px;
+            margin-right: 10px;
+        }
+
+        .logo span {
+            font-style: italic;
+            font-weight: normal;
+            font-size: 16px;
+        }
+
+        .nav-menu {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 25px;
+        }
+
+        .nav-item a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 0;
+            display: block;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .nav-item a:hover {
+            padding-left: 10px;
+            border-bottom: 1px solid white;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            background-color: white;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 18px;
+        }
+
+        .team-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+
+        .team-intro p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .member-photo {
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .team-member:hover .member-photo img {
+            transform: scale(1.05);
+        }
+
+        .member-info {
+            padding: 25px;
+        }
+
+        .member-info h3 {
+            color: #444;
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .member-role {
+            color: #4ECDC4;
+            font-size: 16px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .member-bio {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .specialties {
+            margin-top: 15px;
+        }
+
+        .specialties h4 {
+            color: #444;
+            font-size: 16px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .specialty-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .specialty-tag {
+            background-color: #e3f7f5;
+            color: #4ECDC4;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #4ECDC4, #44A08D);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4ECDC4;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: #4ECDC4;
+            color: white;
+        }
+
+        .cta-section {
+            margin-top: 60px;
+            text-align: center;
+            background: linear-gradient(to right, #f5f5f5, #e0f7f5);
+            padding: 40px;
+            border-radius: 15px;
+        }
+
+        .cta-section h2 {
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, #4ECDC4, #44A08D);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .secondary-btn {
+            background: white;
+            color: #4ECDC4;
+            border: 2px solid #4ECDC4;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .primary-btn:hover, .secondary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                padding: 20px;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="/0lohj5749v.png" alt="">
+                UPPET <span>Style</span>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <ul class="nav-menu">
+                        <li class="nav-item"><a href="index.html">Início</a></li>
+                        <li class="nav-item"><a href="veterinarios.html">Veterinários</a></li>
+                        <li class="nav-item"><a href="emergencia.html" class="active">Emergência</a></li>
+                        <li class="nav-item"><a href="consultas.html">Consultas</a></li>    
+                 </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="header">
+                <h1>Nossa Equipe de Veterinários</h1>
+                <p>Profissionais qualificados e apaixonados pelo bem-estar animal</p>
+            </div>
+
+            <div class="team-intro">
+                <p>Na Clínica Veterinária UPPET, contamos com uma equipe de veterinários altamente qualificados e dedicados, que combinam experiência clínica com um profundo amor pelos animais. Nossos profissionais estão em constante atualização para oferecer o que há de melhor em medicina veterinária, garantindo um atendimento de excelência para o seu pet.</p>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="https://www.shopveterinario.com.br/blog/wp-content/uploads/2021/10/como-abrir-uma-clinica-artigo.jpg" alt="Dra. Ana Silva">
+                    </div>
+                    <div class="member-info">
+                        <h3>Dra. Ana Silva</h3>
+                        <div class="member-role">Diretora Clínica • CRMV-SP 12345</div>
+                        <p class="member-bio">Formada pela USP há mais de 15 anos, a Dra. Ana é especialista em clínica geral e cirurgia de pequenos animais. Com vasta experiência e uma abordagem acolhedora, ela lidera nossa equipe com dedicação e excelência técnica.</p>
+                        
+                        <div class="specialties">
+                            <h4>Especialidades:</h4>
+                            <div class="specialty-tags">
+                                <span class="specialty-tag">Clínica Geral</span>
+                                <span class="specialty-tag">Cirurgia</span>
+                                <span class="specialty-tag">Ortopedia</span>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-icon">in</a>
+                            <a href="#" class="social-icon">f</a>
+                            <a href="#" class="social-icon">i</a>
+                        </div>
+                        
+                        <a href="#" class="contact-btn">Agendar Consulta</a>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="https://blog.matsudapet.com.br/wp-content/uploads/2024/01/visita-veterinario-cuidando-saude-felicidade-pet.jpg" alt="Dr. Carlos Oliveira">
+                    </div>
+                    <div class="member-info">
+                        <h3>Dra. Rafaela Oliveira</h3>
+                        <div class="member-role">Especialista em Diagnóstico • CRMV-SP 23456</div>
+                        <p class="member-bio">Especializado em diagnóstico por imagem, o Dra.Rafaela Santos tem certificação internacional e mais de 10 anos de experiência. Seu conhecimento em ultrassonografia e radiologia é fundamental para diagnósticos precisos.</p>
+                        
+                        <div class="specialties">
+                            <h4>Especialidades:</h4>
+                            <div class="specialty-tags">
+                                <span class="specialty-tag">Diagnóstico por Imagem</span>
+                                <span class="specialty-tag">Radiologia</span>
+                                <span class="specialty-tag">Ultrassonografia</span>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-icon">in</a>
+                            <a href="#" class="social-icon">f</a>
+                        </div>
+                        
+                        <a href="#" class="contact-btn">Agendar Consulta</a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="https://www.atendepet.com/wp-content/uploads/2023/03/10-vantagens-veterinario-em-domicilio-para-cachorros-e-gatos-1024x660.jpg" alt="Dra. Patrícia Santos">
+                    </div>
+                    <div class="member-info">
+                        <h3>Dra. Patrícia Santos</h3>
+                        <div class="member-role">Especialista em Dermatologia • CRMV-SP 45678</div>
+                        <p class="member-bio">Especializada em dermatologia veterinária, a Dra. Patrícia tem vasta experiência no tratamento de problemas de pele, alergias e condições dermatológicas em cães e gatos, oferecendo soluções eficazes para seu pet.</p>
+                        
+                        <div class="specialties">
+                            <h4>Especialidades:</h4>
+                            <div class="specialty-tags">
+                                <span class="specialty-tag">Dermatologia</span>
+                                <span class="specialty-tag">Alergologia</span>
+                                <span class="specialty-tag">Medicina Integrativa</span>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-icon">in</a>
+                            <a href="#" class="social-icon">f</a>
+                            <a href="#" class="social-icon">i</a>
+                        </div>
+                        
+                        <a href="#" class="contact-btn">Agendar Consulta</a>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="https://previews.123rf.com/images/didesign021/didesign0211803/didesign021180300095/98044072-retrato-de-veterin%C3%A1rio-homem-e-engra%C3%A7ado-c%C3%A3o-em-examinando-em-a-escrit%C3%B3rio.jpg" alt="Dr. Roberto Mendes">
+                    </div>
+                    <div class="member-info">
+                        <h3>Dr. Roberto Mendes</h3>
+                        <div class="member-role">Cirurgião • CRMV-SP 56789</div>
+                        <p class="member-bio">Especializado em cirurgia geral e ortopédica, o Dr. Roberto traz técnicas modernas e minimamente invasivas para nossa clínica. Com certificações internacionais, ele garante procedimentos seguros e recuperação mais rápida.</p>
+                        
+                        <div class="specialties">
+                            <h4>Especialidades:</h4>
+                            <div class="specialty-tags">
+                                <span class="specialty-tag">Cirurgia Geral</span>
+                                <span class="specialty-tag">Ortopedia</span>
+                                <span class="specialty-tag">Odontologia</span>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-icon">in</a>
+                            <a href="#" class="social-icon">f</a>
+                        </div>
+                        
+                        <a href="#" class="contact-btn">Agendar Consulta</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <h2>Conheça Nossa Equipe Pessoalmente</h2>
+                <p>Queremos oferecer o melhor atendimento para o seu pet. Agende uma consulta ou visite nossa clínica para conhecer nossas instalações e conversar com nossos veterinários.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="primary-btn">Agendar Consulta</a>
+                    <a href="#" class="secondary-btn">Conhecer a Clínica</a>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
