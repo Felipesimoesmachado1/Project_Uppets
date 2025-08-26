@@ -18,10 +18,7 @@ if (!isset($_SESSION['cliente_id'])) {
 <body>
     <div class="container">
         <aside class="sidebar">
-            <div class="logo">
-                <img src="images/Captura de tela 2025-06-12 164046.png" alt="">
-                UPPETS <span>Sistem</span>
-            </div>
+        
             <nav>
                 <ul class="nav-menu">
                     <li class="nav-item"><a href="pagina_cliente.php">Início</a></li>

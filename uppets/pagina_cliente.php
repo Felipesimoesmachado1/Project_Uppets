@@ -24,12 +24,11 @@ if (!isset($_SESSION['cliente_id'])) {
             <nav>
                 <ul class="nav-menu">
                     <li class="nav-item"><a href="pagina_cliente.php">Início</a></li>
-                    <li class="nav-item"><a href="veterinarios.html">Veterinários</a></li>
-                    <li class="nav-item"><a href="emergencia.html">Emergência</a></li>
                     <li class="nav-item"><a href="agendar_consulta.php">Consultas</a></li>
                     <li class="nav-item"><a href="cadastrar_pet.php">Cadastrar Pet</a></li>
                     <li class="nav-item"><a href="listar_pets.php">Meus Pets</a></li>
-                    <li class="nav-item"><a href="index.html">Sair</a></li>
+                    <li class="nav-item"><a href="historico_consulta.php">Histórico de Consultas</a></li>
+                    <li class="nav-item"><a href="index.html">Sair</a></li></a></li>
                 </ul>
             </nav>
         </aside>

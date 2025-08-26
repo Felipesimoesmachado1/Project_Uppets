@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>UPPET - Cadastro de Cliente</title>
-    <link rel="stylesheet" href="css/cadastrar_cliente.css" />
+    <link rel="stylesheet" href="css/login_cliente.css" />
 </head>
 <body>
     <div class="register-container">

@@ -41,7 +41,7 @@
         </form>
 
         <div class="footer-links">
-            <a href="index.php" class="footer-link">Voltar ao site principal</a>
+            <a href="index.html" class="footer-link">Voltar ao site principal</a>
             <span class="link-separator">|</span>
             <a href="cadastrar_cliente.php" class="footer-link accent-link">Não tem conta? Cadastre-se</a>
         </div>

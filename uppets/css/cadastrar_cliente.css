@@ -1,15 +1,15 @@
 /* Estilos gerais */
 :root {
-    --primary-color: #4ECDC4;
-    --primary-dark: #4ECDC4;
-    --secondary-color: #4ECDC4;
-    --text-color: #333;
-    --text-light: #666;
-    --border-color: #e0e0e0;
-    --error-color: #e74c3c;
-    --background-light: #f8f9fa;
+    --primary-color: #4ECDC4; /* Verde Água */
+    --primary-dark: #44A08D; /* Verde mais escuro */
+    --secondary-color: #FFD166; /* Amarelo para destaque */
+    --text-color: #333; /* Cinza escuro para texto */
+    --text-light: #666; /* Cinza médio para texto secundário */
+    --border-color: #e0e0e0; /* Cor de borda padrão */
+    --error-color: #e74c3c; /* Vermelho para erros */
+    --background-light: #f8f9fa; /* Fundo claro */
     --white: #ffffff;
-    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Sombra padrão */
 }
 
 * {
@@ -19,8 +19,8 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #f8f9fa, #e9f5ff);
+    font-family: 'Poppins', sans-serif; /* Fonte mais moderna */
+    background: linear-gradient(135deg, #e9f5ff, #f8f9fa); /* Gradiente suave de fundo */
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -35,60 +35,88 @@ body {
     border-radius: 16px;
     box-shadow: var(--box-shadow);
     width: 100%;
-    max-width: 450px;
+    max-width: 480px; /* Aumenta um pouco a largura máxima */
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .login-container:hover {
     transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12); /* Sombra mais pronunciada no hover */
 }
 
 /* Logo e cabeçalho */
 .logo-container {
     background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-    padding: 30px;
+    padding: 35px 30px; /* Aumenta o preenchimento */
     text-align: center;
     color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.logo-container::before { /* Efeito de fundo abstrato */
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255,255,255,0.1);
+    transform: rotate(45deg);
+    opacity: 0.1;
 }
 
 .logo-img {
-    width: 80px;
+    width: 100px; /* Aumenta o tamanho da logo */
     height: auto;
     margin-bottom: 15px;
+    border-radius: 50%; /* Torna a logo circular */
+    border: 4px solid rgba(255,255,255,0.8); /* Borda branca */
+    box-shadow: 0 0 15px rgba(0,0,0,0.3); /* Sombra na logo */
+    z-index: 1; /* Garante que a logo fique acima do efeito de fundo */
+    position: relative;
 }
 
 .logo-title {
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 5px;
+    font-size: 32px; /* Tamanho da fonte maior */
+    font-weight: 700; /* Mais negrito */
+    margin-bottom: 8px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2); /* Sombra no texto */
+    z-index: 1;
+    position: relative;
 }
 
 .logo-title span {
-    font-style: italic;
+    font-style: normal; /* Remove itálico */
     font-weight: 400;
+    font-size: 20px; /* Tamanho da fonte ajustado */
+    display: block; /* Garante que o span ocupe a linha inteira */
+    margin-top: 5px;
 }
 
 .logo-subtitle {
-    font-size: 16px;
-    opacity: 0.9;
+    font-size: 17px; /* Tamanho da fonte ajustado */
+    opacity: 0.95;
+    z-index: 1;
+    position: relative;
 }
 
 /* Formulário */
 .login-form {
-    padding: 30px;
+    padding: 35px; /* Aumenta o preenchimento */
 }
 
 .form-group {
-    margin-bottom: 25px;
+    margin-bottom: 28px; /* Mais espaçamento entre grupos */
 }
 
 .form-label {
     display: block;
-    margin-bottom: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text-light);
+    margin-bottom: 10px; /* Mais espaçamento */
+    font-size: 15px;
+    font-weight: 600; /* Mais negrito */
+    color: var(--text-color);
 }
 
 .input-container {
@@ -97,40 +125,41 @@ body {
 
 .form-input {
     width: 100%;
-    padding: 14px 20px 14px 45px;
+    padding: 15px 20px 15px 50px; /* Aumenta preenchimento e espaço para ícone */
     border: 1px solid var(--border-color);
-    border-radius: 8px;
-    font-size: 15px;
+    border-radius: 10px; /* Bordas mais arredondadas */
+    font-size: 16px;
     transition: all 0.3s;
     background-color: var(--background-light);
+    color: var(--text-color);
 }
 
 .form-input:focus {
     border-color: var(--primary-color);
     outline: none;
-    box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.2);
+    box-shadow: 0 0 0 4px rgba(78, 205, 196, 0.3); /* Sombra mais pronunciada no focus */
 }
 
 .input-icon {
     position: absolute;
-    left: 15px;
+    left: 18px; /* Posição do ícone ajustada */
     top: 50%;
     transform: translateY(-50%);
     color: var(--primary-color);
-    font-size: 18px;
+    font-size: 20px; /* Tamanho do ícone ajustado */
 }
 
 /* Botão de mostrar/ocultar senha */
 .password-toggle {
     position: absolute;
-    right: 15px;
+    right: 18px; /* Posição do ícone ajustada */
     top: 50%;
     transform: translateY(-50%);
     background: none;
     border: none;
     color: var(--text-light);
     cursor: pointer;
-    font-size: 18px;
+    font-size: 20px; /* Tamanho do ícone ajustado */
     transition: color 0.3s;
 }
 
@@ -143,8 +172,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
-    font-size: 14px;
+    margin-bottom: 30px; /* Mais espaçamento */
+    font-size: 15px;
 }
 
 .remember-me {
@@ -153,9 +182,9 @@ body {
 }
 
 .checkbox-input {
-    width: 18px;
-    height: 18px;
-    margin-right: 8px;
+    width: 20px; /* Tamanho do checkbox ajustado */
+    height: 20px;
+    margin-right: 10px;
     accent-color: var(--primary-color);
     cursor: pointer;
 }
@@ -168,7 +197,7 @@ body {
 .forgot-link {
     color: var(--primary-color);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600; /* Mais negrito */
     transition: color 0.3s;
 }
 
@@ -180,46 +209,49 @@ body {
 /* Botão de submit */
 .submit-btn {
     width: 100%;
-    padding: 15px;
+    padding: 16px; /* Mais preenchimento */
     background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     color: var(--white);
     border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
+    border-radius: 10px; /* Bordas mais arredondadas */
+    font-size: 18px; /* Tamanho da fonte maior */
+    font-weight: 700; /* Mais negrito */
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 12px; /* Mais espaçamento entre texto e ícone */
     transition: all 0.3s;
-    margin-top: 10px;
+    margin-top: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2); /* Sombra mais pronunciada */
 }
 
 .submit-btn:hover {
     background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
-    box-shadow: 0 5px 15px rgba(78, 205, 196, 0.4);
+    box-shadow: 0 12px 25px rgba(78, 205, 196, 0.5); /* Sombra mais intensa no hover */
+    transform: translateY(-3px); /* Efeito de elevação */
 }
 
 .btn-icon {
-    font-size: 14px;
+    font-size: 16px; /* Tamanho do ícone ajustado */
     transition: transform 0.3s;
 }
 
 .submit-btn:hover .btn-icon {
-    transform: translateX(3px);
+    transform: translateX(5px); /* Efeito de deslize maior */
 }
 
 /* Mensagem de erro */
 .error-message {
     color: var(--error-color);
     background-color: #fdecea;
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 14px;
-    margin: 20px 0;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 15px;
+    margin: 25px 0;
     display: none;
     text-align: center;
+    border: 1px solid var(--error-color);
 }
 
 /* Links no rodapé */
@@ -227,10 +259,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    padding: 20px;
+    gap: 15px; /* Mais espaçamento */
+    padding: 25px; /* Mais preenchimento */
     border-top: 1px solid var(--border-color);
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .footer-link {
@@ -245,7 +277,7 @@ body {
 
 .accent-link {
     color: var(--primary-color);
-    font-weight: 500;
+    font-weight: 600; /* Mais negrito */
 }
 
 .link-separator {
@@ -261,8 +293,8 @@ body {
 .form-submitting .submit-btn::after {
     content: "";
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 22px; /* Tamanho do spinner ajustado */
+    height: 22px;
     border: 3px solid rgba(255, 255, 255, 0.3);
     border-top-color: var(--white);
     border-radius: 50%;
@@ -301,4 +333,29 @@ body {
     .link-separator {
         display: none;
     }
+    .logo-img {
+        width: 80px;
+    }
+    .logo-title {
+        font-size: 28px;
+    }
+    .logo-title span {
+        font-size: 18px;
+    }
+    .logo-subtitle {
+        font-size: 15px;
+    }
+    .form-input {
+        padding: 12px 15px 12px 45px;
+        font-size: 15px;
+    }
+    .input-icon, .password-toggle {
+        font-size: 18px;
+    }
+    .submit-btn {
+        padding: 14px;
+        font-size: 16px;
+    }
+    
 }
+

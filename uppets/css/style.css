@@ -87,7 +87,7 @@ body {
 }
 
 .logo {
-    max-width: 240px;
+    max-width: 300px;
     width: 100%;
     margin-bottom: 5px;
     animation: subtle-pulse 5s infinite ease-in-out;

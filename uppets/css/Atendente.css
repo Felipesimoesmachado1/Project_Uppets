@@ -1,360 +1,284 @@
+/* Estilos Gerais */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f5f7fa;
-  color: #333;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5; /* Fundo mais suave */
+    color: #333;
 }
 
-header {
-  background-color: #2a9d8f;
-  color: white;
-  padding: 15px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+.container {
+    display: flex;
+    min-height: 100vh;
+    box-shadow: 0 0 20px rgba(0,0,0,0.05); /* Sombra sutil para o container principal */
 }
 
-header h1 {
-  font-size: 1.5rem;
+/* Sidebar - Reutilizando estilos do index.css para consistência */
+.sidebar {
+    width: 280px; /* Largura ajustada */
+    background: linear-gradient(180deg, #4ECDC4, #44A08D); /* Gradiente mais suave */
+    color: white;
+    padding: 30px 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.1); /* Sombra para destacar a sidebar */
 }
 
-.navbar-menu a {
-  color: white;
-  text-decoration: none;
-  margin-left: 25px;
-  font-weight: 600;
-  transition: color 0.3s;
-  cursor: pointer;
+.logo {
+    font-size: 24px; /* Tamanho da fonte ajustado */
+    font-weight: bold;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column; /* Alinha logo e texto verticalmente */
+    align-items: center;
+    text-align: center;
 }
 
-.navbar-menu a:hover,
-.navbar-menu a.active {
-  color: #e9c46a;
+.logo img {
+    max-width: 120px; /* Aumenta o tamanho da logo */
+    height: auto;
+    margin-bottom: 10px; /* Espaçamento entre imagem e texto */
+    border-radius: 50%; /* Borda arredondada para a logo */
+    border: 3px solid rgba(255,255,255,0.8); /* Borda branca */
+    box-shadow: 0 0 15px rgba(0,0,0,0.2); /* Sombra na logo */
 }
 
-#logoutBtn {
-  background-color: transparent;
-  border: 1.5px solid white;
-  color: white;
-  padding: 6px 14px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s, color 0.3s;
+.logo span {
+    font-style: normal; /* Remove itálico */
+    font-weight: normal;
+    font-size: 18px; /* Tamanho da fonte ajustado */
+    display: block; /* Garante que o span ocupe a linha inteira */
+    margin-top: 5px;
 }
 
-#logoutBtn:hover {
-  background-color: white;
-  color: #2a9d8f;
+.nav-menu {
+    list-style: none;
+    width: 100%;
 }
 
-main {
-  flex-grow: 1;
-  padding: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
+.nav-item {
+    margin-bottom: 15px; /* Espaçamento ajustado */
 }
 
-section {
-  display: none;
+.nav-item a {
+    color: white;
+    text-decoration: none;
+    font-size: 17px; /* Tamanho da fonte ajustado */
+    padding: 12px 15px; /* Preenchimento ajustado */
+    display: block;
+    border-radius: 8px; /* Bordas arredondadas */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
 }
 
-section.active {
-  display: block;
+.nav-item a:hover {
+    background-color: rgba(255,255,255,0.2); /* Fundo mais claro no hover */
+    transform: translateX(5px); /* Efeito de deslize */
 }
 
-/* Dashboard aberto por padrão */
-#dashboardPage {
-  display: block;
+.nav-item a.active {
+    font-weight: bold;
+    background-color: rgba(255,255,255,0.3); /* Fundo para item ativo */
+    border-bottom: none; /* Remove borda inferior */
 }
 
-#dataAtual {
-  font-size: 1.2rem;
-  margin-bottom: 25px;
-  font-weight: 600;
-  color: #264653;
-  text-transform: capitalize;
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 40px; /* Preenchimento consistente */
+    background-color: white;
+    border-radius: 10px; /* Bordas arredondadas para o conteúdo principal */
+    margin: 20px; /* Margem para separar do container */
 }
 
-#contadoresDashboard {
-  display: flex;
-  gap: 25px;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
+.header {
+    text-align: center;
+    margin-bottom: 50px; /* Mais espaçamento */
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee; /* Linha divisória */
 }
 
-.contador {
-  background: white;
-  border-radius: 10px;
-  padding: 25px 30px;
-  flex: 1 1 200px;
-  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  color: #2a9d8f;
-  font-weight: 700;
-  font-size: 1.3rem;
-  transition: background-color 0.3s;
+.header h1 {
+    color: #44A08D; /* Cor principal */
+    font-size: 42px; /* Tamanho maior para o título */
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05); /* Sombra leve no texto */
 }
 
-.contador:hover {
-  background-color: #e0f2f1;
+.header p {
+    color: #666;
+    font-size: 19px;
+    line-height: 1.5;
 }
 
-#agendamentosTable {
-  width: 100%;
-  border-collapse: collapse;
-  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 15px;
+/* Tabela de Agendamentos */
+.consulta-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border-radius: 10px;
+    overflow: hidden; /* Garante que as bordas arredondadas funcionem */
 }
 
-#agendamentosTable th,
-#agendamentosTable td {
-  padding: 12px 15px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
-  font-size: 0.95rem;
+.consulta-table thead {
+    background-color: #4ECDC4; /* Cor de cabeçalho */
+    color: white;
 }
 
-#agendamentosTable th {
-  background-color: #264653;
-  color: white;
-  font-weight: 600;
+.consulta-table th {
+    padding: 15px; /* Preenchimento maior */
+    text-align: left;
+    font-weight: bold;
+    font-size: 16px;
 }
 
-#agendamentosTable tr:hover {
-  background-color: #f1f9f8;
+.consulta-table td {
+    padding: 15px; /* Preenchimento maior */
+    border-bottom: 1px solid #eee;
+    font-size: 15px;
+    color: #555;
 }
 
-#agendamentosTable td:last-child {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
+.consulta-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Listras para melhor leitura */
 }
 
-#agendamentosTable button {
-  border: none;
-  background: none;
-  cursor: pointer;
-  color: #2a9d8f;
-  font-size: 1.1rem;
-  transition: color 0.2s;
+.consulta-table tbody tr:hover {
+    background-color: #eef8f7; /* Destaque ao passar o mouse */
 }
 
-#agendamentosTable button:hover {
-  color: #e76f51;
+/* Botões dentro da tabela */
+.consulta-table .btn {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 5px;
+    transition: all 0.3s ease;
 }
 
-#addAgendamentoBtn {
-  margin: 20px 0 30px;
-  background-color: #2a9d8f;
-  color: white;
-  border: none;
-  padding: 12px 28px;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
+.consulta-table .btn:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
 }
 
-#addAgendamentoBtn:hover {
-  background-color: #1f6060;
+.consulta-table .btn[href*="confirmar"] {
+    background-color: #28a745; /* Verde para confirmar */
+    color: white;
 }
 
-#relatoriosPage form {
-  background: white;
-  padding: 25px 30px;
-  border-radius: 10px;
-  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  margin: 0 auto;
+.consulta-table .btn[href*="cancelar"] {
+    background-color: #dc3545; /* Vermelho para cancelar */
+    color: white;
 }
 
-#relatoriosPage label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 6px;
-  color: #264653;
+.consulta-table .btn[href*="adicionar_diagnostico"] {
+    background-color: #007bff; /* Azul para adicionar diagnóstico */
+    color: white;
 }
 
-#relatoriosPage select,
-#relatoriosPage input[type='date'],
-#relatoriosPage textarea {
-  width: 100%;
-  padding: 10px 14px;
-  margin-bottom: 18px;
-  border: 1.5px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: border-color 0.3s;
-  font-family: inherit;
-}
-
-#relatoriosPage select:focus,
-#relatoriosPage input[type='date']:focus,
-#relatoriosPage textarea:focus {
-  outline: none;
-  border-color: #2a9d8f;
-}
-
-#relatoriosPage textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-#relatoriosPage button[type='submit'] {
-  background-color: #2a9d8f;
-  color: white;
-  padding: 12px 28px;
-  border: none;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-#relatoriosPage button[type='submit']:hover {
-  background-color: #1f6060;
+/* Responsividade */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 220px;
+    }
+    .main-content {
+        padding: 30px;
+    }
+    .header h1 {
+        font-size: 36px;
+    }
 }
 
 @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .navbar-menu {
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-
-  main {
-    padding: 20px;
-  }
-
-  #contadoresDashboard {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  #agendamentosTable th,
-  #agendamentosTable td {
-    font-size: 0.85rem;
-    padding: 10px 8px;
-  }
-
-  #addAgendamentoBtn {
-    width: 100%;
-    padding: 14px;
-  }
-
-  #relatoriosPage form {
-    width: 100%;
-    padding: 20px;
-  }
+    .container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        padding: 20px;
+        flex-direction: row; /* Alinha itens da sidebar horizontalmente */
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    .sidebar .logo {
+        margin-bottom: 20px;
+        flex-direction: row;
+    }
+    .sidebar .logo img {
+        max-width: 80px;
+        margin-bottom: 0;
+        margin-right: 10px;
+    }
+    .sidebar .logo span {
+        display: inline;
+    }
+    .sidebar nav {
+        width: 100%;
+    }
+    .nav-menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    .nav-item {
+        margin: 5px 10px;
+    }
+    .nav-item a {
+        padding: 8px 12px;
+        font-size: 15px;
+    }
+    
+    .main-content {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .header h1 {
+        font-size: 30px;
+    }
+    .header p {
+        font-size: 16px;
+    }
 }
 
-/* Modal para cadastro */
-.modal-bg {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 26px;
+    }
+    .header p {
+        font-size: 14px;
+    }
+    .logo img {
+        max-width: 60px;
+    }
+    .logo span {
+        font-size: 16px;
+    }
+    .nav-item a {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+    .consulta-table th,
+    .consulta-table td {
+        padding: 10px;
+        font-size: 13px;
+    }
+    .consulta-table .btn {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
 }
 
-.modal-bg.active {
-  display: flex;
-}
-
-.modal-content {
-  background: white;
-  border-radius: 12px;
-  padding: 25px 30px;
-  width: 90%;
-  max-width: 500px;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-  position: relative;
-}
-
-.modal-content h2 {
-  margin-bottom: 20px;
-  color: #264653;
-}
-
-.modal-content label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 600;
-  color: #264653;
-}
-
-.modal-content input,
-.modal-content select {
-  width: 100%;
-  padding: 10px 14px;
-  margin-bottom: 15px;
-  border: 1.5px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: border-color 0.3s;
-  font-family: inherit;
-}
-
-.modal-content input:focus,
-.modal-content select:focus {
-  outline: none;
-  border-color: #2a9d8f;
-}
-
-.modal-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 15px;
-  margin-top: 10px;
-}
-
-.btn {
-  padding: 10px 22px;
-  font-weight: 700;
-  font-size: 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  border: none;
-  transition: background-color 0.3s;
-}
-
-.btn-primary {
-  background-color: #2a9d8f;
-  color: white;
-}
-
-.btn-primary:hover {
-  background-color: #1f6060;
-}
-
-.btn-secondary {
-  background-color: #e76f51;
-  color: white;
-}
-
-.btn-secondary:hover {
-  background-color: #c5533e;
-}

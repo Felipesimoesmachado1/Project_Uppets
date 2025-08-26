@@ -31,7 +31,7 @@
         </form>
 
         <div class="back-to-site">
-            <a href="index.php">Voltar ao site principal</a>
+            <a href="index.html">Voltar ao site principal</a>
         </div>
     </div>
 

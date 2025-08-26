@@ -32,16 +32,12 @@ $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UPPET - Página do Atendente</title>
-    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/consultas.css" />
     <script src="js/index.js"></script>
 </head>
 <body>
     <div class="container">
         <aside class="sidebar">
-            <div class="logo">
-                <img src="images/Captura de tela 2025-06-12 164046.png" alt="">
-                UPPETS <span>Sistem</span>
-            </div>
             <nav>
                 <ul class="nav-menu">
                     <li class="nav-item"><a href="pagina_atendente.php">Início</a></li>
@@ -97,3 +93,4 @@ $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </body>
 </html>
+
