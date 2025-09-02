@@ -1,0 +1,109 @@
+/* diagnostico.css */
+
+/* Caixa com informações da consulta */
+.consulta-info {
+    background: #f9fdfc;
+    border: 2px solid #e0f7f5;
+    border-left: 6px solid #44A08D;
+    border-radius: 12px;
+    padding: 20px 25px;
+    margin-bottom: 35px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+}
+
+.consulta-info:hover {
+    transform: translateY(-3px);
+}
+
+.consulta-info h3 {
+    font-size: 22px;
+    color: #44A08D;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.consulta-info h3::before {
+    content: "🩺";
+    margin-right: 10px;
+    font-size: 24px;
+}
+
+.consulta-info p {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #444;
+}
+
+/* Formulário */
+.diagnostico-form {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 25px 30px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    border: 1px solid #eee;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+.form-group textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+    resize: vertical;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group textarea:focus {
+    border-color: #44A08D;
+    outline: none;
+    box-shadow: 0 0 8px rgba(68, 160, 141, 0.3);
+}
+
+/* Botão */
+.submit-btn {
+    background: linear-gradient(135deg, #44A08D, #4ECDC4);
+    color: white;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    display: inline-block;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* Link Voltar */
+.main-content a {
+    display: inline-block;
+    margin-top: 25px;
+    font-size: 15px;
+    color: #44A08D;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.main-content a:hover {
+    color: #2c7266;
+    text-decoration: underline;
+}

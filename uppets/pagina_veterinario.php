@@ -39,9 +39,7 @@ $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <div class="container">
         <aside class="sidebar">
-            <div class="logo">
-                UPPETS <span>Sistem</span>
-            </div>
+            
             <nav>
                 <ul class="nav-menu">
                     <li class="nav-item"><a href="pagina_veterinario.php">Início</a></li>
@@ -90,7 +88,6 @@ $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </tbody>
             </table>
 
-            <a href="index.html">Sair</a>
         </main>
     </div>
 </body>

@@ -42,7 +42,7 @@ $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <ul class="nav-menu">
                     <li class="nav-item"><a href="pagina_atendente.php">Início</a></li>
                     <li class="nav-item"><a href="#">Consultas Agendadas</a></li>
-                    <li class="nav-item"><a href="logout.php">Sair</a></li>
+                    <li class="nav-item"><a href="index.html">Sair</a></li>
                 </ul>
             </nav>
         </aside>
@@ -80,15 +80,12 @@ $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <span><?php echo htmlspecialchars(ucfirst($agendamento["status"])); ?></span>
                                 <?php endif; ?>
                                 <?php if ($agendamento["status"] == "realizada" && empty($agendamento["consulta_descricao"])): ?>
-                                    <a href="adicionar_diagnostico.php?id=<?php echo $agendamento["agendamento_id"]; ?>" class="btn">Add Diagnóstico</a>
                                 <?php endif; ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
-
-            <a href="logout.php">Sair</a>
         </main>
     </div>
 </body>
