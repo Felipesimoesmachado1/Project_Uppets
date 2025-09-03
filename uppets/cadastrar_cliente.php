@@ -10,9 +10,9 @@
     <div class="register-container">
         <div class="logo-container">
             <div class="logo">
-                <img src="images/Captura de tela 2025-06-12 164046.png" alt="Logo UPPET" class="logo-img" />
-                <h1 class="logo-title">UPPET <span>Sistem</span></h1>
-                <p class="logo-subtitle">Cadastro de Cliente</p>
+    
+            
+                <h1 class="logo-subtitle">Cadastro de Cliente</h1>
             </div>
         </div>
 
@@ -72,7 +72,7 @@
         </form>
 
         <div class="footer-links">
-            <a href="index.php" class="footer-link">Voltar ao site principal</a>
+            <a href="index.html" class="footer-link">Voltar ao site principal</a>
             <span class="link-separator">|</span>
             <a href="login_cliente.php" class="footer-link accent-link">Já tem conta? Faça login</a>
         </div>

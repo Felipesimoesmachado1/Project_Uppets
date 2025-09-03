@@ -10,7 +10,6 @@
     <div class="login-container">
         <div class="logo" role="banner" aria-label="Logo UPPET">
             <img src="images/Captura de tela 2025-06-12 164046.png" alt="Logo UPPET" />
-            <h1>UPPET <span>Sistem</span></h1>
             <p>Sistema de Gerenciamento Veterinário</p>
         </div>
 

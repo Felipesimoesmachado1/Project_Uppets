@@ -48,13 +48,9 @@ $agendamentos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <nav>
                 <ul class="nav-menu">
                     <li class="nav-item"><a href="pagina_cliente.php">Início</a></li>
-                    <li class="nav-item"><a href="veterinarios.html">Veterinários</a></li>
-                    <li class="nav-item"><a href="emergencia.html">Emergência</a></li>
                     <li class="nav-item"><a href="consultas.php">Agendar Consulta</a></li>
                     <li class="nav-item"><a href="cadastrar_pet.php">Cadastrar Pet</a></li>
                     <li class="nav-item"><a href="listar_pets.php">Meus Pets</a></li>
-                    <li class="nav-item"><a href="historico_consulta.php">Histórico de Consultas</a></li>
-                    <li class="nav-item"><a href="logout.php">Sair</a></li>
                 </ul>
             </nav>
         </aside>

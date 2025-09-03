@@ -31,7 +31,7 @@ body {
 }
 
 .logo {
-    font-size: 24px; /* Tamanho da fonte ajustado */
+    font-size: 30px; /* Tamanho da fonte ajustado */
     font-weight: bold;
     margin-bottom: 40px;
     display: flex;
@@ -41,7 +41,7 @@ body {
 }
 
 .logo img {
-    max-width: 120px; /* Aumenta o tamanho da logo */
+    max-width: 130px; /* Aumenta o tamanho da logo */
     height: auto;
     margin-bottom: 10px; /* Espaçamento entre imagem e texto */
     border-radius: 50%; /* Borda arredondada para a logo */
@@ -100,7 +100,7 @@ body {
 }
 
 .header h1 {
-    color: #44A08D; /* Cor principal */
+    color: #4ECDC4; /* Cor principal */
     font-size: 42px; /* Tamanho maior para o título */
     margin-bottom: 15px;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.05); /* Sombra leve no texto */
@@ -203,7 +203,7 @@ body {
     content: "🐾";
     margin-right: 10px;
     font-size: 28px; /* Tamanho do ícone ajustado */
-    color: #44A08D; /* Cor do ícone */
+    color: #4ECDC4; /* Cor do ícone */
 }
 
 .info-card p {

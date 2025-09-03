@@ -11,15 +11,14 @@
         <div class="logo-container">
             <div class="logo" role="banner" aria-label="Logo UPPET">
                 <img src="images/Captura de tela 2025-06-12 164046.png" alt="Logo UPPET" class="logo-img" />
-                <h1 class="logo-title">UPPET <span>Sistem</span></h1>
-                <p class="logo-subtitle">Área do Cliente</p>
+                
             </div>
         </div>
 
         <form id="login-form" class="login-form" method="POST" action="processar_login_cliente.php">
             <div class="form-group">
-                <label for="email" class="form-label">E-mail ou CPF</label>
-                <input type="text" id="email" name="email" class="form-input" placeholder="Digite seu e-mail ou CPF" required autocomplete="username" />
+                <label for="email" class="form-label">E-mail</label>
+                <input type="text" id="email" name="email" class="form-input" placeholder="Digite seu e-mail" required autocomplete="username" />
             </div>
 
             <div class="form-group">

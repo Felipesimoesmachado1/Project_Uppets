@@ -46,20 +46,18 @@ body {
 
 /* Logo e cabeçalho */
 .logo-container {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-    padding: 30px;
+    padding: 70px;
     text-align: center;
-    color: var(--white);
+    color: #4ECDC4;
 }
 
 .logo-img {
-    width: 80px;
-    height: auto;
-    margin-bottom: 15px;
+  width: 250px;  /* Define a largura da imagem */
+  height: 120px; /* Define a altura da imagem */
 }
 
 .logo-title {
-    font-size: 28px;
+    font-size: 100px;
     font-weight: 600;
     margin-bottom: 5px;
 }
@@ -70,7 +68,7 @@ body {
 }
 
 .logo-subtitle {
-    font-size: 16px;
+    font-size: 50px;
     opacity: 0.9;
 }
 

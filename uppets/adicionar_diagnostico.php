@@ -1,6 +1,6 @@
 
 <?php
-require 'conexao.php'; // Arquivo de conexão com o banco de dados
+require 'conexao.php'; 
 session_start();
 
 if (!isset($_SESSION['funcionario_id']) || !isset($_GET['id'])) {
@@ -47,23 +47,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UPPET - Adicionar Diagnóstico</title>
-    <link rel="stylesheet" href="css/histi.css"/>
+    <link rel="stylesheet" href="css/diagnostico.css"/>
     <script src="js/index.js"></script>
 </head>
 <body>
     <div class="container">
-        <aside class="sidebar">
-            <nav>
-                <ul class="nav-menu">
-                    <li class="nav-item"><a href="pagina_veterinario.php">Início</a></li>
-                </ul>
-            </nav>
-        </aside>
+        
 
         <main class="main-content">
             <div class="header">
                 <h1>Adicionar Diagnóstico</h1>
-                <p>Preencha os dados abaixo para adicionar um diagnóstico à consulta.</p>
             </div>
 
             <div class="consulta-info">

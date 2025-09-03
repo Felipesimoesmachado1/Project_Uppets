@@ -71,7 +71,6 @@ if (!isset($_SESSION['cliente_id'])) {
                 <button type="submit" class="submit-btn">Cadastrar Pet</button>
             </form>
 
-            <a href="pagina_cliente.php">Voltar para a Página Inicial</a>
         </main>
     </div>
 </body>

@@ -1,10 +1,10 @@
 <?php
-require 'conexao.php'; // Arquivo de conexão com o banco de dados
+require 'conexao.php'; 
 session_start();
 
 if (isset($_GET['id'])) {
-    $agendamento_id = $_GET['id']; // Renomeado para agendamento_id
-
+    $agendamento_id = $_GET['id']; 
+    
     // Atualiza o status na tabela agendamentos
     $sql = "UPDATE agendamentos SET status = 'cancelada' WHERE id = ?";
     $stmt = $conn->prepare($sql);
