@@ -1,4 +1,4 @@
-CREATE uppet;
+CREATE DATABASE uppet;
 USE uppet;
 
 -- Tabela de funcionários (veterinário e atendente)
