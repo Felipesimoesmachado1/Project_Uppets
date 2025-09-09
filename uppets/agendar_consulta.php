@@ -17,15 +17,7 @@ if (!isset($_SESSION['cliente_id'])) {
 </head>
 <body>
     <div class="container">
-        <aside>
-            <nav>
-                <ul class="nav-menu">
-                    <li class="nav-item"><a href="pagina_cliente.php">Início</a></li>
-                    <li class="nav-item"><a href="historico_consulta.php">Historico de Consultas</a></li>
-                    <li class="nav-item"><a href="cadastrar_pet.php">Cadastra pet</a></li>
-                </ul>
-            </nav>
-        </aside>
+            
 
         <main class="main-content">
             <div class="header">

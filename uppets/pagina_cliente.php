@@ -19,12 +19,11 @@ if (!isset($_SESSION['cliente_id'])) {
     <div class="container">
         <aside class="sidebar">
             <div class="logo">
-                UPPETS <span>Sistem</span>
+                UPPET <span>Sistem</span>
             </div>
             <nav>
                 <ul class="nav-menu">
-                    <li class="nav-item"><a href="pagina_cliente.php">Início</a></li>
-                    <li class="nav-item"><a href="agendar_consulta.php">Consultas</a></li>
+                    <li class="nav-item"><a href="agendar_consulta.php">Agendar Consultas</a></li>
                     <li class="nav-item"><a href="cadastrar_pet.php">Cadastrar Pet</a></li>
                     <li class="nav-item"><a href="listar_pets.php">Meus Pets</a></li>
                     <li class="nav-item"><a href="historico_consulta.php">Histórico de Consultas</a></li>
@@ -35,14 +34,15 @@ if (!isset($_SESSION['cliente_id'])) {
 
         <main class="main-content">
             <div class="header">
-                <h1>Clínica Veterinária UPPETS</h1>
+                <h1>Clínica Veterinária UPPET</h1>
                 <p>Cuidando com amor e dedicação do seu melhor amigo</p>
                 <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
                     <a href="agendar_consulta.php" class="btn" style="background: #4ECDC4; color: white; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">Agendar Consulta</a>
-                    <a href="cadastrar_pet.php" class="btn" style="background: #FF6B6B; color: white; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">Cadastrar Pet</a>
+                    <a href="cadastrar_pet.php" class="btn" style="background: #4ECDC4; color: white; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">Cadastrar Pet</a>
                     <a href="listar_pets.php" class="btn" style="background: #4ECDC4; color: white; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">Meus Pets</a>
-                    <a href="emergencia.html" class="btn" style="background: white; color: #4ECDC4; border: 2px solid #4ECDC4; padding: 10px 20px; border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">Emergência 24h</a>
+                    <a href="historico_consulta.php" class="btn" style="background: #4ECDC4; color: white; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">Histórico de consultas</a>
                 </div>
+
             </div>
 
             <div class="banner">
